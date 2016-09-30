@@ -1,0 +1,117 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+		<div class="banner col-md-12">
+			<img class="banner-back" src="{% static 'images/banner1.png' %}">
+			<div class="banner-content text-center b-15 clearfix">
+				<img class="hidden-xs" src="{% static 'images/img-perevod.png' %}">
+				<br>
+				<div class="m-t-25">
+				<div class="inline-block m-r-20">
+					<a class="button" href="#">отправить деньги</a>
+					<p class="sub-text m-t-15">мгновенно без регистрации</p>
+				</div>
+				<div class="inline-block">
+					<a class="button" href="{% url 'registration' %}">регистрация</a>
+					<p class="sub-text m-t-15">экономь 0,5% на все переводы</p>
+				</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="info-tabs" class="hidden-xs col-md-12 m-t-20">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#tarifs-limits" aria-controls="tarifs-limits" role="tab" data-toggle="tab">тарифы и лимиты</a></li>
+				<li role="presentation"><a href="#asks-questions" aria-controls="asks-questions" role="tab" data-toggle="tab">вопросы и ответы</a></li>
+				<li role="presentation"><a href="#how-it-works" aria-controls="how-it-works" role="tab" data-toggle="tab">как это работает?</a></li>
+				<li role="presentation"><a href="#registration" aria-controls="registration" role="tab" data-toggle="tab">что дает регистрация?</a></li>
+			</ul>
+			<!-- Tab panes -->
+  			<div class="tab-content">
+    			<div role="tabpanel" class="tab-pane active" id="tarifs-limits">
+    				<h5>Тарифы:</h5>
+    				<br>
+    				<p>
+					Все переводы с карты на карту не зависимо от вашего банка тарифицируются одинаково, это 0.5% + 5 грн.
+					дополнительно может взиматься комиссия, установленная банком-эмитентом карты получателя перевода.
+					</p>
+					<br>
+					<h5>Лимиты на перевод средств:</h5>
+					<br>
+					<p>
+					15 000,00 грн. - максимальная сумма одного перевода с учетом комиссии.
+					75 000,00 грн. - максимальная общая сумма переводов в сутки.
+					150 000,00 грн. - максимальная общая сумма переводов в месяц.
+					25 шт - максимальное количество операций в день.
+					100 шт - максимальное количество операций в течение месяца.
+					</p>
+					<br>
+					<p>
+					** - банк-эмитент может устанавливать свои лимиты на операции по картам.
+					</p>
+    			</div>
+    			<div role="tabpanel" class="tab-pane" id="asks-questions">
+    				<p>Что такое PAY2YOU?</p>
+
+					<p>Какие карты можно использовать для перевода и получения денег через PAY2YOU?</p>
+
+					<p>В какой валюте можно переводить деньги?</p>
+
+					<p>На каких устройствах можно сделать перевод?</p>
+
+					<p>Какие данные мне нужно знать, чтобы отправить деньги?</p>
+
+					<p>Что такое CVV-код?</p>
+
+					<p>Что такое промо код? Где его получить?</p>
+
+    			</div>
+    			<div role="tabpanel" class="tab-pane" id="how-it-works">
+    				<h4>Как перевести деньги с карты на карту?</h4>
+    				<p>
+						Наиболее удобный способ перекинуть деньги, зная номер карты получателя, или хотя бы номер его мобильного телефона
+						— это онлайн-сервис денежных переводов.
+					</p>
+					<p>
+						Денежные переводы сервиса PAY2YOU освобождают вас от посещения отделений банков и поисков терминала. Зачисление происходит согласно правилам работы банка, карта которого получает деньги. Обычно процесс занимает несколько минут.
+					</p>
+					<p>
+						Перевести деньги очень просто — достаточно указать: номер карты получателя, номер вашей карты, CVV2/CVC2 вашей карты,сумму перечисления.
+    				</p>
+    			</div>
+
+    			<div role="tabpanel" class="tab-pane" id="registration">
+    				<h4>Что дает регистрация?</h4>
+					<p>
+						Наиболее удобный способ перекинуть деньги, зная номер карты получателя, или хотя бы номер его мобильного телефона
+						— это онлайн-сервис денежных переводов.
+					</p>
+					<p>
+						Денежные переводы сервиса PAY2YOU освобождают вас от посещения отделений банков и поисков терминала. Зачисление происходит согласно правилам работы банка, карта которого получает деньги. Обычно процесс занимает несколько минут.
+					</p>
+					<p>
+						Перевести деньги очень просто — достаточно указать: номер карты получателя, номер вашей карты, CVV2/CVC2 вашей карты, сумму перечисления.
+					</p>
+
+    			</div>
+  			</div>
+		</div>
+		<div class="col-sm-12 col-xs-12 visible-xs-block m-t-20" id="acordion-place"></div>
+		<div class="banner col-md-12 m-t-20 m-b-10" id="baner2">
+			<img class="banner-back" src="{% static 'images/banner2.png' %}">
+			<div class="banner-content text-right vertical-center">
+				<div class="fz-16 banner-text p-r-35">
+					<div style="display: inline-block; vertical-align: middle;" class="m-r-50">
+						Желаете экономить деньги на комиссиях!<br>Войдите в личный кабинет
+					</div>
+					<div style="display: inline-block; vertical-align: middle;">
+						<span class="radiogreen-color">ВХОД</span>
+						<img class="m-l-15" src="{% static 'images/ enter-button.png' %}">
+					</div>
+				</div>
+			</div>
+		</div>
+    <div id="iframe">
+		<iframe frameborder="no" width="100%" scrolling="no" border="0px" height="740px" src="https://p2y.com.ua/partners/sofast2/#!/send" seamless marginwidth="0" marginwidth="0"></iframe>
+	</div>
+{% endblock %}
