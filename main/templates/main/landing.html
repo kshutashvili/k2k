@@ -21,36 +21,19 @@
 
 		<div id="info-tabs" class="hidden-xs col-md-12 m-t-20">
 			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#tarifs-limits" aria-controls="tarifs-limits" role="tab" data-toggle="tab">тарифы и лимиты</a></li>
-				<li role="presentation"><a href="#asks-questions" aria-controls="asks-questions" role="tab" data-toggle="tab">вопросы и ответы</a></li>
-				<li role="presentation"><a href="#how-it-works" aria-controls="how-it-works" role="tab" data-toggle="tab">как это работает?</a></li>
-				<li role="presentation"><a href="#registration" aria-controls="registration" role="tab" data-toggle="tab">что дает регистрация?</a></li>
+				{% for tab in tabs %}
+				<li role="presentation"><a href="#{{ tab.content.slug }}" aria-controls="{{ tab.content.slug }}" role="tab" data-toggle="tab">{{ tab.content.title }}</a></li>
+				{% endfor %}
+				<li role="presentation" class="active"><a href="#asks-questions" aria-controls="asks-questions" role="tab" data-toggle="tab">вопросы и ответы</a></li>
 			</ul>
 			<!-- Tab panes -->
   			<div class="tab-content">
-    			<div role="tabpanel" class="tab-pane active" id="tarifs-limits">
-    				<h5>Тарифы:</h5>
-    				<br>
-    				<p>
-					Все переводы с карты на карту не зависимо от вашего банка тарифицируются одинаково, это 0.5% + 5 грн.
-					дополнительно может взиматься комиссия, установленная банком-эмитентом карты получателя перевода.
-					</p>
-					<br>
-					<h5>Лимиты на перевод средств:</h5>
-					<br>
-					<p>
-					15 000,00 грн. - максимальная сумма одного перевода с учетом комиссии.
-					75 000,00 грн. - максимальная общая сумма переводов в сутки.
-					150 000,00 грн. - максимальная общая сумма переводов в месяц.
-					25 шт - максимальное количество операций в день.
-					100 шт - максимальное количество операций в течение месяца.
-					</p>
-					<br>
-					<p>
-					** - банк-эмитент может устанавливать свои лимиты на операции по картам.
-					</p>
+				{% for tab in tabs %}
+    			<div role="tabpanel" class="tab-pane" id="{{ tab.content.slug }}">
+    				{{ tab.content.content|linebreaks }}
     			</div>
-    			<div role="tabpanel" class="tab-pane" id="asks-questions">
+				{% endfor %}
+				<div role="tabpanel" class="tab-pane active" id="asks-questions">
     				<p>Что такое PAY2YOU?</p>
 
 					<p>Какие карты можно использовать для перевода и получения денег через PAY2YOU?</p>
@@ -64,34 +47,6 @@
 					<p>Что такое CVV-код?</p>
 
 					<p>Что такое промо код? Где его получить?</p>
-
-    			</div>
-    			<div role="tabpanel" class="tab-pane" id="how-it-works">
-    				<h4>Как перевести деньги с карты на карту?</h4>
-    				<p>
-						Наиболее удобный способ перекинуть деньги, зная номер карты получателя, или хотя бы номер его мобильного телефона
-						— это онлайн-сервис денежных переводов.
-					</p>
-					<p>
-						Денежные переводы сервиса PAY2YOU освобождают вас от посещения отделений банков и поисков терминала. Зачисление происходит согласно правилам работы банка, карта которого получает деньги. Обычно процесс занимает несколько минут.
-					</p>
-					<p>
-						Перевести деньги очень просто — достаточно указать: номер карты получателя, номер вашей карты, CVV2/CVC2 вашей карты,сумму перечисления.
-    				</p>
-    			</div>
-
-    			<div role="tabpanel" class="tab-pane" id="registration">
-    				<h4>Что дает регистрация?</h4>
-					<p>
-						Наиболее удобный способ перекинуть деньги, зная номер карты получателя, или хотя бы номер его мобильного телефона
-						— это онлайн-сервис денежных переводов.
-					</p>
-					<p>
-						Денежные переводы сервиса PAY2YOU освобождают вас от посещения отделений банков и поисков терминала. Зачисление происходит согласно правилам работы банка, карта которого получает деньги. Обычно процесс занимает несколько минут.
-					</p>
-					<p>
-						Перевести деньги очень просто — достаточно указать: номер карты получателя, номер вашей карты, CVV2/CVC2 вашей карты, сумму перечисления.
-					</p>
 
     			</div>
   			</div>
