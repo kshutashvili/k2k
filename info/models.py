@@ -35,7 +35,9 @@ class LandingTab(models.Model):
         ordering = ('order',)
 
     def __unicode__(self):
-        return 'Вкладка %i' % self.order
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
 
     objects = LandingTabManager()
 
