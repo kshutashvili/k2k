@@ -31,7 +31,7 @@ class FlatpageAdmin(admin.ModelAdmin):
 
 @admin.register(LandingTab)
 class LandingTabAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'content_url', 'is_draft')
+    list_display = ('__unicode__', 'content_url', 'order', 'is_draft')
 
     content_url = ChangeUrl('content', descr='Страница')
 
