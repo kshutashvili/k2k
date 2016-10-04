@@ -45,3 +45,26 @@ class LandingTab(models.Model):
     content = models.OneToOneField(Flatpage, verbose_name='Страница',
                                    limit_choices_to={'is_draft': False},
                                    blank=True, null=True)
+
+
+class QuestionManager(models.Manager):
+    def answered(self, *args, **kwargs):
+        kwargs['is_draft'] = False
+        return self.filter(*args, **kwargs)
+
+
+class Question(models.Model):
+    class Meta:
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
+        ordering = ('order', 'question')
+
+    def __unicode__(self):
+        return self.question
+
+    objects = QuestionManager()
+
+    question = models.TextField('Вопрос')
+    answer = models.TextField('Ответ', blank=True, null=True)
+    order = models.IntegerField('Порядок', default=0)
+    is_draft = models.BooleanField('Черновик', default=True)
