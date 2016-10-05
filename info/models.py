@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.urlresolvers import reverse
 
+from info import contacts
+
 
 class Flatpage(models.Model):
     class Meta:
@@ -68,3 +70,36 @@ class Question(models.Model):
     answer = models.TextField('Ответ', blank=True, null=True)
     order = models.IntegerField('Порядок', default=0)
     is_draft = models.BooleanField('Черновик', default=True)
+
+
+class ContactManager(models.Manager):
+    def actual(self, *args, **kwargs):
+        kwargs['is_actual'] = True
+        return self.filter(*args, **kwargs)
+
+
+class Contact(models.Model):
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
+    def __unicode__(self):
+        return '{}: {}'.format(self.get_type().verbose_name, self.identifier)
+
+    objects = ContactManager()
+
+    type = models.CharField(verbose_name='Тип', choices=contacts.choices,
+                            max_length=20)
+    identifier = models.CharField(
+        verbose_name='Идентификатор', max_length=255,
+        help_text='Номер телефона, адрес электронной почты и т.д.'
+    )
+    comment = models.CharField('Комментарий', blank=True, null=True,
+                               max_length=70)
+    is_actual = models.BooleanField('Актуален', default=True)
+
+    def get_type(self):
+        return contacts.by_name.get(self.type)
+
+    def get_link(self):
+        return self.get_type().format_link(self.identifier)

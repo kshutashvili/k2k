@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
 
-from info.models import Flatpage, LandingTab, Question
+from info.models import Flatpage, LandingTab, Question, Contact
 
 
 class ChangeUrl(object):
@@ -63,3 +63,18 @@ class QuestionAdmin(admin.ModelAdmin):
                 return obj.answer[:200] + '...'
         return obj.answer
     answer_preview.short_description = 'Ответ'
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('identifier', 'type', 'comment', 'is_actual')
+    list_filter = ('is_actual', 'type')
+    actions = ['set_actual', 'set_not_actual']
+
+    def set_actual(self, request, queryset, value=True):
+        queryset.update(is_actual=value)
+    set_actual.short_description = 'Отметить как актуальные'
+
+    def set_not_actual(self, request, queryset):
+        self.set_actual(request, queryset, value=False)
+    set_not_actual.short_description = 'Отметить как неактуальные'

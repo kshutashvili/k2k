@@ -82,10 +82,9 @@
 						<div class="wraper">
 						<i class="icon icon-phone"></i>
 						<p class="menu__item__title"><b s18n="">Служба поддержки</b></p>
-						<a href="tel:+380443927773">+380 (44) 392-77-73&nbsp;<span s18n="">КИЕВ</span></a>
-						<a href="tel:+380502577773">+380 (50) 257-77-73&nbsp;<span s18n="">МТС</span></a>
-						<a href="tel:+380672577773">+380 (67) 257-77-73&nbsp;<span s18n="">КИЕВСТАР</span></a>
-						<a href="tel:+380732577773">+380 (73) 257-77-73&nbsp;<span s18n="">LIFECELL</span><br></a>
+							{% for c in contacts.phone %}
+							<a href="{{ c.get_link }}">{{ c.identifier }}{% if c.comment %}&nbsp;<span s18n="">{{ c.comment|upper }}</span>{% endif %}</a>
+							{% endfor %}
 						<p class="menu__item__description">Пн - Пт 09:00 - 18:00</p>
 						</div>
 					</div>
@@ -93,7 +92,10 @@
 						<div class="wraper">
 						<i class="icon icon-email"></i>
 						<p class="menu__item__title">
-						<b s18n="">Email</b></p><a href="mailto:help@p2y.com.ua">help@p2y.com.ua</a>
+						<b s18n="">Email</b></p>
+							{% for c in contacts.email %}
+							<a href="{{ c.get_link }}">{{ c.identifier }}</a>
+							{% endfor %}
 						</div>
 					</div>
 
