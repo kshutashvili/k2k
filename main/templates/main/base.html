@@ -28,7 +28,7 @@
   			</ul>
 		</div>
 		<div id="logo" class="col-md-3 col-sm-3 col-xs-2 logo">
-			<img src="{% static 'images/logo.png' %}">
+			<a href="{% url "index" %}"><img src="{% static 'images/logo.png' %}"></a>
 		</div>
 		<div class="top-menu col-md-6 col-sm-7 col-xs-8">
 			<div id="left-circle" class="circle circle-m outer-circle">
@@ -161,6 +161,14 @@
     		animCircle('#right-circle');
     		timer2 = setTimeout(run, 6000);
   		}, 3500);
+
+        $('a[href="#iframe"]').click( function(){
+            var scroll_el = $(this).attr('href');
+            if ($(scroll_el).length != 0) {
+            $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 800);
+        }
+	    return false;
+    });
 	});
 </script>
 </html>
