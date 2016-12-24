@@ -21,6 +21,7 @@
 	font-weight: normal;
 }
 
+
 .generate-columns(75);
 .generate-columns(@n, @i: 0) when (@i =< @n){
 	.m-t-@{i}{
@@ -108,6 +109,14 @@ body{
 header{
 	position: relative;
 	.center-big();
+	a{
+		color: #000;
+	}
+
+	a:hover{
+		color: #000000;
+		text-decoration: none;
+	}
 }
 
 header div{
