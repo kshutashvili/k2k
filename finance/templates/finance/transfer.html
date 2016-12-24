@@ -1,5 +1,10 @@
 {% extends 'main/base.html' %}
 {% block title %}Перевод | {{ block.super }}{% endblock %}
 {% block content %}
-<iframe class="transfer" src="https://p2y.com.ua/partners/faircat/#!/send" height="800"></iframe>
+{% endblock %}
+
+{% block iframe %}
+    <div id="iframe">
+		<iframe frameborder="no" width="100%" scrolling="no" border="0px" height="740px" src="https://p2y.com.ua/partners/sofast2/#!/send" seamless marginwidth="0" marginwidth="0"></iframe>
+	</div>
 {% endblock %}
