@@ -26,11 +26,12 @@ class Phone(ContactType):
 
 phone = Phone('phone', 'Телефон', 'tel:{id}')
 email = ContactType('email', 'Почта', 'mailto:{id}')
+telegram = ContactType('telegram', 'Телеграм', '{id}')
 
 choices = []
 by_name = {}
 
-for c in (phone, email):
+for c in (phone, email, telegram):
     choices.append((c.name, c.verbose_name))
     by_name[c.name] = c
 del c

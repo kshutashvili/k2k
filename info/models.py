@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from info import contacts
 
 
+
 class Flatpage(models.Model):
     class Meta:
         verbose_name = 'Информационная страница'
@@ -103,3 +104,4 @@ class Contact(models.Model):
 
     def get_link(self):
         return self.get_type().format_link(self.identifier)
+
