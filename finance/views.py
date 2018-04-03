@@ -7,4 +7,11 @@ from users.views import VerifiedPhoneRequiredMixin
 class TransferView(LoginRequiredMixin,
                    VerifiedPhoneRequiredMixin,
                    TemplateView):
-    template_name = 'finance/transfer.html'
+    template_name = 'finance/transfers.html'
+
+
+class TransferViewPage(LoginRequiredMixin,
+                       VerifiedPhoneRequiredMixin,
+                       TemplateView):
+    template_name = 'finance/transfer_page.html'
+

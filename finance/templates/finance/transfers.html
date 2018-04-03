@@ -1,0 +1,131 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block meta_title %}Денежные переводы{% endblock %}
+
+{% block content %}
+
+	<section class="main-section">
+		<div class="container">
+			<div class="main">
+				<main class="main-content">
+					<h1 class="main-content__title">Денежные <span>переводы</span></h1>
+					<p class="main-content__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto voluptate cumque ea corrupti nostrum accusamus! Iste nam mollitia dolores quos ea maxime? Reiciendis delectus tenetur voluptatibus, officia tempora. Nobis, temporibus.</p>
+
+					<div class="btn-group">
+						<a href="{% url 'transfers-page' %}" class="btn btn-prime">Перевести деньги</a>
+						<button class="btn btn-prime btnRegistration">Регистрация</button>
+					</div>
+
+					<div class="main-content__tab">
+						<a href="{% url 'landing' %}" class="main-content__tab-link">Оформить кредит</a>
+						<a href="{% url 'transfers' %}" class="main-content__tab-link active">Переводы</a>
+					</div>
+				</main>
+				<!--img height must be less than 280px-->
+				<div class="main__image">
+					<img src="{% static 'img/macbook.png' %}" alt="macbook" class="main__image-prime">
+					<img src="{% static 'img/content-2.jpg' %}" alt="content" class="main__image-content">
+					<img src="{% static 'img/pig.png' %}" alt="pig" class="main__image-abs">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="media-section">
+		<div class="container">
+			<div class="media">
+				<div class="media__item">
+					<img src="{% static 'img/icons/advanteges/smartphone.png' %}" alt="smartphone" class="media__item-img">
+					<p class="media__item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos quia blanditiis temporibus quas, incidunt.</p>
+				</div>
+				<div class="media__item">
+					<img src="{% static 'img/icons/advanteges/money.png' %}" alt="money" class="media__item-img">
+					<p class="media__item-text">Harum, nobis asperiores at temporibus quo nostrum repellat itaque repudiandae vero dignissimos, in quis expedita </p>
+				</div>
+				<div class="media__item">
+					<img src="{% static 'img/icons/advanteges/wallet.png' %}" alt="wallet" class="media__item-img">
+					<p class="media__item-text">Odio in unde ratione laboriosam quo, architecto doloremque nobis, neque autem consequuntur, voluptas et itaque suscipit. </p>
+				</div>
+				<div class="media__item">
+					<img src="{% static 'img/icons/advanteges/credit-card.png' %}" alt="credit-card" class="media__item-img">
+					<p class="media__item-text">Voluptate consequatur aspernatur numquam cumque, odit incidunt possimus accusantium dolore.</p>
+				</div>
+				<div class="media__item">
+					<img src="{% static 'img/icons/advanteges/credit-card-color.png' %}" alt="credit-card" class="media__item-img">
+					<p class="media__item-text">Dolorem rem ea iure, voluptas ipsa minima, perferendis impedit eveniet perspiciatis velit harum </p>
+				</div>
+				<div class="media__item">
+					<img src="{% static 'img/icons/advanteges/coin.png' %}" alt="coin" class="media__item-img">
+					<p class="media__item-text">Voluptatum illo in veritatis porro quia velit maiores minus tempora provident, asperiores corrupti doloribus </p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section">
+		<div class="container">
+			<h2 class="section-title">Переводы</h2>
+			<form action="#" class="form-delivery">
+				<fieldset class="form-delivery__person">
+					<h4 class="form-delivery__caption">Відправник</h4>
+					<div class="form-delivery__card">
+						<label for="card-1" class="form-delivery__label">Введіть номер своєї карти</label>
+						<input id="card-1" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
+						<span class="form-delivery__icon">
+							<i class="far fa-envelope"></i>
+						</span>
+					</div>
+					<div class="form-delivery__multiple">
+						<div class="form-delivery__multiple-item">
+							<label for="date-1" class="form-delivery__label form-delivery__label--expanded">Термін дії</label>
+
+							<input id="date-1" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="MM" maxlength="2">
+							<input id="date-2" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="YY" maxlength="2">
+						</div>
+						<div class="form-delivery__multiple-item">
+							<label for="cvv-1" class="form-delivery__label">CVV</label>
+							<a href="#" class="form-delivery__link-top">Що це?</a>
+							<input id="cvv-1" type="password" class="form-delivery__input form-delivery__input--cvv" placeholder="***" maxlength="3">
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="form-delivery__person">
+					<h4 class="form-delivery__caption">Отримувач</h4>
+					<div class="form-delivery__card">
+						<label for="card-2" class="form-delivery__label">Введіть номер карти отримувача</label>
+						<input id="card-2" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
+						<span class="form-delivery__icon">
+							<i class="far fa-envelope"></i>
+						</span>
+					</div>
+				</fieldset>
+				<fieldset class="form-delivery__main">
+					<h4 class="form-delivery__main-title">
+						<span>Сума переказу</span>
+						від 10 до 14999 (включаючи комісію)
+					</h4>
+					<input type="tel" placeholder="0.00" class="form-delivery__input form-delivery__input--labeled">
+					<span for="#" class="form-delivery__input-caption">грн</span>
+					<p class="form-delivery__main-prompt">Комісія буде зарахована автоматично (0.6% + 3.06 грн).</p>
+					<p class="form-delivery__main-info">Разом з урахуванням комісії: </p>
+					<div class="form-delivery__main-total">0.00 грн</div>
+					<div class="form-delivery__phone">
+						<label for="delivery-phone" class="form-delivery__label">Ваш телефон</label>
+						<input class="form-delivery__input form-delivery__input--phone" id="delivery-phone" type="tel" placeholder="+38 (_ _ _) _ _ _  _ _ _ _">
+						<span class="form-delivery__icon form-delivery__icon--inside">
+							<i class="fas fa-phone"></i>
+						</span>
+						<a href="#" class="form-delivery__icon-link" title="Подсказка"><i class="far fa-question-circle"></i></a>
+					</div>
+					<div class="b-checkbox">
+						<input id="delivery-check" type="checkbox">
+						<label for="delivery-check">Я погоджуюсь з <a href="#" class="b-checkbox__link">умовами публічного договору</a></label>
+						<button class="form__btn-apply">Здійснити переказ</button>	
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+{% include "main/questions.html" %}
+{% endblock %}
