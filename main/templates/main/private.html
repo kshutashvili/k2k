@@ -1,0 +1,198 @@
+{% extends "main/base.html" %}
+
+{% block meta_title %}{% endblock %}
+
+{% block content %}
+
+	<section class="profile">
+		<div class="profile__head">
+			<div class="container">
+				<div class="profile__head-bar">
+					<div class="profile__head-item profile__user"><i class="fas fa-user"></i><span>{{ user.first_name }} {{ user.last_name }}</span></div>
+					<div class="profile__head-item profile__login">Логин: <span>{{ user.phone }}</span></div>
+
+					<div class="profile__head-item profile__icon-item">
+						<i class="fas fa-heart"></i>
+						23.00грн
+						<div class="tooltip">Благотворительность</div>
+					</div>
+					
+					<div class="profile__head-item profile__icon-item">
+						<i class="fas fa-gift"></i>
+						23.00грн
+						<div class="tooltip">
+							<div class="tooltip__text">Бонусный счет</div>
+							
+							<a href="#" class="btn btn-shop">В магазин</a>
+						</div>
+					</div>
+					<a href="{% url 'user_edit' %}" class="profile__head-item btn btn-prime btn-prime--green">Изменить данные</a>
+				</div>
+
+				<nav class="profile-tab-box">
+					<div class="profile-tab">
+						<button class="profile-tab__btn">Кредиты</button>
+
+						<div class="profile-tab__container profile-tab__container--left">
+							<div class="profile-tab__content">
+								<input class="profile-tab__search" type="search" placeholder="Проверить кредит по номеру">
+
+								<p class="profile-tab__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolor atque architecto non, impedit dolorum officia? Rem qui eos eaque? Pariatur inventore nam voluptates ducimus aut laudantium vero expedita incidunt.</p>
+
+								<div class="profile-person">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">
+										<span>№ 659032</span>
+										<span>Сумма кредита <span class="profile-person__item-special">5000грн</span></span>
+										<span>Строк <span class="profile-person__item-special">12 мес</span></span>
+									</div>
+									<div class="profile-person__item"><span>Статус: </span><span class="profile-person__item-special">На рассмотрении</span></div>
+								</div>
+
+								<div class="profile-person profile-person--red">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">
+										<span>№ 659032</span>
+										<span>Сумма кредита <span class="profile-person__item-special">5000грн</span></span>
+										<span>Строк <span class="profile-person__item-special">12 мес</span></span>
+									</div>
+									<div class="profile-person__item"><span>Статус: </span><span class="profile-person__item-special">На рассмотрении</span></div>
+								</div>
+							</div>	
+						</div>
+					</div>
+					
+					<div class="profile-tab">
+						<button class="profile-tab__btn"><i class="fas fa-credit-card"></i>Моя карта</button>
+						<div class="profile-tab__container profile-tab__container--left">
+							<div class="profile__mycard"><span>6565 6565 6575 4582</span><button class="btn-transparent btn-copy"><i class="fas fa-copy"></i></button></div>
+						</div>
+					</div>
+
+					<div class="profile-tab">
+						<button class="profile-tab__btn">Контакты</button>
+						<div class="profile-tab__container">
+							<div class="profile-tab__content">
+								<div class="profile-person">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">Карта: <span>5454 6352 7689 2369</span><button class="btn-transparent btn-copy"><i class="fas fa-copy"></i></button></div>
+									<div class="profile-person__item">Телефон: <span> +38067 767 76 76</span><button class="btn-transparent btn-copy"><i class="fas fa-copy"></i></button></div>
+								</div>
+
+								<div class="profile-person">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">Карта: <span>5454 6352 7689 2369</span><button class="btn-transparent btn-copy"><i class="fas fa-copy"></i></button></div>
+									<div class="profile-person__item">Телефон: <span> +38067 767 76 76</span><button class="btn-transparent btn-copy"><i class="fas fa-copy"></i></button></div>
+								</div>
+
+								<div class="profile-person">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">Карта: <span>5454 6352 7689 2369</span><button class="btn-transparent btn-copy"><i class="fas fa-copy"></i></button></div>
+									<div class="profile-person__item">Телефон: <span> +38067 767 76 76</span><button class="btn-transparent btn-copy"><i class="fas fa-copy"></i></button></div>
+								</div>
+							</div>
+							
+							<button class="btn btn-prime profile-tab__btn-apply">Добавить контакт</button>
+						</div>
+					</div>
+
+					<div class="profile-tab">
+						<button class="profile-tab__btn">Мошенники</button>
+						<div class="profile-tab__container">
+							<div class="profile-tab__content">
+								<input class="profile-tab__search" type="search" placeholder="Проверить карту на мошенничество">
+
+								<p class="profile__tab-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolor atque architecto non, impedit dolorum officia? Rem qui eos eaque? Pariatur inventore nam voluptates ducimus aut laudantium vero expedita incidunt.</p>
+
+								<div class="profile-person profile-person--red">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">Карта: <span>5454 6352 7689 2369</span></div>
+									<div class="profile-person__item">Телефон: <span> +38067 767 76 76</span></div>
+								</div>
+
+								<div class="profile-person  profile-person--red">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">Карта: <span>5454 6352 7689 2369</span></div>
+									<div class="profile-person__item">Телефон: <span> +38067 767 76 76</span></div>
+								</div>
+
+								<div class="profile-person  profile-person--red">
+									<h4 class="profile-person__item">Ира Бабенко</h4>
+									<div class="profile-person__item">Карта: <span>5454 6352 7689 2369</span></div>
+									<div class="profile-person__item">Телефон: <span> +38067 767 76 76</span></div>
+								</div>
+							</div>
+
+							<button class="btn btn-prime profile-tab__btn-apply btnApply">Заявить о мошеннике</button>				
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		
+		<section class="section">
+			<div class="container container--flex">
+				<h2 class="section-title section-title--for-flex">Переводы</h2>
+				<form action="#" class="form-delivery">
+					<fieldset class="form-delivery__person">
+						<h4 class="form-delivery__caption">Відправник</h4>
+						<div class="form-delivery__card">
+							<label for="card-1" class="form-delivery__label">Введіть номер своєї карти</label>
+							<input id="card-1" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
+							<span class="form-delivery__icon">
+								<i class="far fa-envelope"></i>
+							</span>
+						</div>
+						<div class="form-delivery__multiple">
+							<div class="form-delivery__multiple-item">
+								<label for="date-1" class="form-delivery__label form-delivery__label--expanded">Термін дії</label>
+
+								<input id="date-1" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="MM" maxlength="2">
+								<input id="date-2" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="YY" maxlength="2">
+							</div>
+							<div class="form-delivery__multiple-item">
+								<label for="cvv-1" class="form-delivery__label">CVV</label>
+								<a href="#" class="form-delivery__link-top">Що це?</a>
+								<input id="cvv-1" type="password" class="form-delivery__input form-delivery__input--cvv" placeholder="***" maxlength="3">
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="form-delivery__person">
+						<h4 class="form-delivery__caption">Отримувач</h4>
+						<div class="form-delivery__card">
+							<label for="card-2" class="form-delivery__label">Введіть номер карти отримувача</label>
+							<input id="card-2" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
+							<span class="form-delivery__icon">
+								<i class="far fa-envelope"></i>
+							</span>
+						</div>
+					</fieldset>
+					<fieldset class="form-delivery__main">
+						<h4 class="form-delivery__main-title">
+							<span>Сума переказу</span>
+							від 10 до 14999 (включаючи комісію)
+						</h4>
+						<input type="tel" placeholder="0.00" class="form-delivery__input form-delivery__input--labeled">
+						<span for="#" class="form-delivery__input-caption">грн</span>
+						<p class="form-delivery__main-prompt">Комісія буде зарахована автоматично (0.6% + 3.06 грн).</p>
+						<p class="form-delivery__main-info">Разом з урахуванням комісії: </p>
+						<div class="form-delivery__main-total">0.00 грн</div>
+						<div class="form-delivery__phone">
+							<label for="delivery-phone" class="form-delivery__label">Ваш телефон</label>
+							<input class="form-delivery__input form-delivery__input--phone" id="delivery-phone" type="tel" placeholder="+38 (_ _ _) _ _ _  _ _ _ _">
+							<span class="form-delivery__icon form-delivery__icon--inside">
+								<i class="fas fa-phone"></i>
+							</span>
+							<a href="#" class="form-delivery__icon-link" title="Подсказка"><i class="far fa-question-circle"></i></a>
+						</div>
+						<div class="b-checkbox">
+							<input id="delivery-check" type="checkbox">
+							<label for="delivery-check">Я погоджуюсь з <a href="#" class="b-checkbox__link">умовами публічного договору</a></label>
+							<button class="form__btn-apply">Здійснити переказ</button>	
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</section>
+{% endblock %}

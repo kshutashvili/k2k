@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Transfers</title>
+	<link rel="stylesheet" href="dist/css/jquery-ui.css">
+	<link rel="stylesheet" href="dist/css/styles.css">
+</head>
+<body>
+	<header class="header">	
+		<div class="header__top">
+			<div class="container">
+				<p class="header__login">
+					Добро пожаловать <a href="#">Войти</a> или <a href="#">Зарегестрироватся</a>
+				</p>
+				<nav class="header__top-nav">
+					<a href="#">Переводы</a>
+					<a href="#">Вопрос-ответ</a>
+					<a href="#">Получить кредит</a>
+					<a href="#">Контакты</a>
+				</nav>
+				<ul class="header__social">
+					<li><a href="#"><i class="fab fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<main class="header__main">
+			<div class="container">
+				<a href='#' class="b-logo">
+					<img src="dist/img/logo.png" alt="logo">
+				</a>
+
+				<button class="mobile-menu">
+					<div class="mobile-menu__sandwich">
+						<span class="mobile-menu__topper"></span>
+						<span class="mobile-menu__middle"></span>
+						<span class="mobile-menu__footer"></span>
+					</div>
+					<span class="mobile-menu__text">Меню</span>
+				</button>
+
+				<nav class="header__main-nav">
+					<a href="#">Переводы</a>
+					<a href="#">Преимущества</a>
+					<a href="#">Бизнесу</a>
+					<a href="#">Благотворительность</a>
+				</nav>
+			</div>
+		</main>
+	</header>
+
+	<section class="main-section">
+		<div class="container">
+			<div class="main">
+				<main class="main-content">
+					<h1 class="main-content__title">Денежные <span>переводы</span></h1>
+					<p class="main-content__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto voluptate cumque ea corrupti nostrum accusamus! Iste nam mollitia dolores quos ea maxime? Reiciendis delectus tenetur voluptatibus, officia tempora. Nobis, temporibus.</p>
+
+					<div class="btn-group">
+						<a href="transfer-page.html" class="btn btn-prime">Перевести деньги</a>
+						<button class="btn btn-prime btnRegistration">Регистрация</button>
+					</div>
+
+					<div class="main-content__tab">
+						<a href='index.html' class="main-content__tab-link">Оформить кредит</a>
+						<a href='transfers.html' class="main-content__tab-link active">Переводы</a>
+					</div>
+				</main>
+				<!--img height must be less than 280px-->
+				<div class="main__image">
+					<img src="dist/img/macbook.png" alt="macbook" class="main__image-prime">
+					<img src="dist/img/content-2.jpg" alt="content" class="main__image-content">
+					<img src="dist/img/pig.png" alt="pig" class="main__image-abs">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="media-section">
+		<div class="container">
+			<div class="media">
+				<div class="media__item">
+					<img src="dist/img/icons/advanteges/smartphone.png" alt="smartphone" class="media__item-img">
+					<p class="media__item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos quia blanditiis temporibus quas, incidunt.</p>
+				</div>
+				<div class="media__item">
+					<img src="dist/img/icons/advanteges/money.png" alt="money" class="media__item-img">
+					<p class="media__item-text">Harum, nobis asperiores at temporibus quo nostrum repellat itaque repudiandae vero dignissimos, in quis expedita </p>
+				</div>
+				<div class="media__item">
+					<img src="dist/img/icons/advanteges/wallet.png" alt="wallet" class="media__item-img">
+					<p class="media__item-text">Odio in unde ratione laboriosam quo, architecto doloremque nobis, neque autem consequuntur, voluptas et itaque suscipit. </p>
+				</div>
+				<div class="media__item">
+					<img src="dist/img/icons/advanteges/credit-card.png" alt="credit-card" class="media__item-img">
+					<p class="media__item-text">Voluptate consequatur aspernatur numquam cumque, odit incidunt possimus accusantium dolore.</p>
+				</div>
+				<div class="media__item">
+					<img src="dist/img/icons/advanteges/credit-card-color.png" alt="credit-card" class="media__item-img">
+					<p class="media__item-text">Dolorem rem ea iure, voluptas ipsa minima, perferendis impedit eveniet perspiciatis velit harum </p>
+				</div>
+				<div class="media__item">
+					<img src="dist/img/icons/advanteges/coin.png" alt="coin" class="media__item-img">
+					<p class="media__item-text">Voluptatum illo in veritatis porro quia velit maiores minus tempora provident, asperiores corrupti doloribus </p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section">
+		<div class="container">
+			<h2 class="section-title">Переводы</h2>
+			<form action="#" class="form-delivery">
+				<fieldset class="form-delivery__person">
+					<h4 class="form-delivery__caption">Відправник</h4>
+					<div class="form-delivery__card">
+						<label for="card-1" class="form-delivery__label">Введіть номер своєї карти</label>
+						<input id="card-1" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
+						<span class="form-delivery__icon">
+							<i class="far fa-envelope"></i>
+						</span>
+					</div>
+					<div class="form-delivery__multiple">
+						<div class="form-delivery__multiple-item">
+							<label for="date-1" class="form-delivery__label form-delivery__label--expanded">Термін дії</label>
+
+							<input id="date-1" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="MM" maxlength="2">
+							<input id="date-2" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="YY" maxlength="2">
+						</div>
+						<div class="form-delivery__multiple-item">
+							<label for="cvv-1" class="form-delivery__label">CVV</label>
+							<a href="#" class="form-delivery__link-top">Що це?</a>
+							<input id="cvv-1" type="password" class="form-delivery__input form-delivery__input--cvv" placeholder="***" maxlength="3">
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="form-delivery__person">
+					<h4 class="form-delivery__caption">Отримувач</h4>
+					<div class="form-delivery__card">
+						<label for="card-2" class="form-delivery__label">Введіть номер карти отримувача</label>
+						<input id="card-2" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
+						<span class="form-delivery__icon">
+							<i class="far fa-envelope"></i>
+						</span>
+					</div>
+				</fieldset>
+				<fieldset class="form-delivery__main">
+					<h4 class="form-delivery__main-title">
+						<span>Сума переказу</span>
+						від 10 до 14999 (включаючи комісію)
+					</h4>
+					<input type="tel" placeholder="0.00" class="form-delivery__input form-delivery__input--labeled">
+					<span for="#" class="form-delivery__input-caption">грн</span>
+					<p class="form-delivery__main-prompt">Комісія буде зарахована автоматично (0.6% + 3.06 грн).</p>
+					<p class="form-delivery__main-info">Разом з урахуванням комісії: </p>
+					<div class="form-delivery__main-total">0.00 грн</div>
+					<div class="form-delivery__phone">
+						<label for="delivery-phone" class="form-delivery__label">Ваш телефон</label>
+						<input class="form-delivery__input form-delivery__input--phone" id="delivery-phone" type="tel" placeholder="+38 (_ _ _) _ _ _  _ _ _ _">
+						<span class="form-delivery__icon form-delivery__icon--inside">
+							<i class="fas fa-phone"></i>
+						</span>
+						<a href="#" class="form-delivery__icon-link" title="Подсказка"><i class="far fa-question-circle"></i></a>
+					</div>
+					<div class="b-checkbox">
+						<input id="delivery-check" type="checkbox">
+						<label for="delivery-check">Я погоджуюсь з <a href="#" class="b-checkbox__link">умовами публічного договору</a></label>
+						<button class="form__btn-apply">Здійснити переказ</button>	
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+
+	<section class="s-info">
+		<div class="container">
+			<div class="s-info__img">
+				<img src="dist/img/credit-cards.png" alt="credit-cards">
+			</div>
+			<div class="s-info__content">
+				<h2 class="s-info__title">Економте на комисии до 90%</h2>
+				<p class="s-info__text">Просто зарегистрируйтесь на сайте и получите уникальное придложение от нашего сервиса</p>
+				<div class="btn-group">
+					<button class="btn btn-prime btnRegistration">Регистрация</button>
+					<button class="btn btn-prime btnLogin">Вход</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="question-section">
+		<div class="container">
+			<h2 class="section-title">Вопрос – ответ</h2>
+			<div class="question spoiler">
+				<h3 class="question__title">Возможно ли отменить транзакцию после отправки?<i class="fas fa-angle-down"></i></h3>
+				<p class="question__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum sapiente officia in saepe, dolor, perferendis deleniti labore. Adipisci dolorum facilis cumque iste, magnam veritatis, consequatur quos nostrum, aperiam, repellat perspiciatis!</p>
+			</div>
+
+			<div class="question spoiler">
+				<h3 class="question__title">Возможно ли отменить транзакцию после отправки?<i class="fas fa-angle-down"></i></h3>
+
+				<p class="question__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum sapiente officia in saepe, dolor, perferendis deleniti labore. Adipisci dolorum facilis cumque iste, magnam veritatis, consequatur quos nostrum, aperiam, repellat perspiciatis!</p>
+			</div>
+
+			<div class="question spoiler">
+				<h3 class="question__title">Возможно ли отменить транзакцию после отправки?<i class="fas fa-angle-down"></i></h3>
+
+				<p class="question__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum sapiente officia in saepe, dolor, perferendis deleniti labore. Adipisci dolorum facilis cumque iste, magnam veritatis, consequatur quos nostrum, aperiam, repellat perspiciatis!</p>
+			</div>
+
+			<div class="question spoiler">
+				<h3 class="question__title">Возможно ли отменить транзакцию после отправки?<i class="fas fa-angle-down"></i></h3>
+
+				<p class="question__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum sapiente officia in saepe, dolor, perferendis deleniti labore. Adipisci dolorum facilis cumque iste, magnam veritatis, consequatur quos nostrum, aperiam, repellat perspiciatis!</p>
+			</div>
+
+			<div class="question spoiler">
+				<h3 class="question__title">Возможно ли отменить транзакцию после отправки?<i class="fas fa-angle-down"></i></h3>
+
+				<p class="question__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum sapiente officia in saepe, dolor, perferendis deleniti labore. Adipisci dolorum facilis cumque iste, magnam veritatis, consequatur quos nostrum, aperiam, repellat perspiciatis!</p>
+			</div>
+
+			<div class="question spoiler">
+				<h3 class="question__title">Возможно ли отменить транзакцию после отправки?<i class="fas fa-angle-down"></i></h3>
+
+				<p class="question__answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum sapiente officia in saepe, dolor, perferendis deleniti labore. Adipisci dolorum facilis cumque iste, magnam veritatis, consequatur quos nostrum, aperiam, repellat perspiciatis!</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="faq">
+		<div class="container">
+			<form action="#" class="form">
+				<h3 class="form__title">Есть вопросы? Задайте их нам</h3>
+				<select class="form__item select">
+					<option value="Тема">Тема</option>
+					<option value="Тема">Тема</option>
+				</select>
+
+				<input class="form__item input" type="mail" placeholder="E-mail" required>
+				<input class="form__item input" type="text" placeholder="Имя" required>
+				<input class="form__item input" type="text" placeholder="Ваш вопрос" required>
+
+				<button type="submit" class="btn form__btn">Отправить</button>
+			</form>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<a href='#' class="b-logo">
+				<img src="dist/img/logo.png" alt="logo">
+			</a>
+			<ul class="footer__nav">
+				<li><a href="#" class="footer__nav-link">История</a></li>
+				<li><a href="#" class="footer__nav-link">Правовая информация</a></li>
+				<li><a href="#" class="footer__nav-link">Гарантии</a></li>
+				<li><a href="#" class="footer__nav-link">Контакты</a></li>
+			</ul>
+			<ul class="footer__nav">
+				<li><a href="#" class="footer__nav-link">Вход/Регистрация</a></li>
+				<li><a href="#" class="footer__nav-link">Преимущества</a></li>
+				<li><a href="#" class="footer__nav-link">Бизнесу</a></li>
+				<li><a href="#" class="footer__nav-link">Благотворительность</a></li>
+			</ul>
+			<ul class="footer__nav">		     
+				<li><a href="#" class="footer__nav-link">Кредиты</a></li>
+				<li><a href="#" class="footer__nav-link">Получить Кредит</a></li>
+				<li><a href="#" class="footer__nav-link">Ограничения</a></li>
+				<li><a href="#" class="footer__nav-link">Правовая информация</a></li>
+				<li><a href="#" class="footer__nav-link">Погасить кредит</a></li>
+			</ul>
+
+			<div class="footer__contacts">
+				<h3 class="footer-title">Контакты</h3>
+				<ul class="footer__contacts-list">
+					<li><a href="tel:+380636047474"><i class="fab fa-telegram"></i>+380636047474</a></li>
+					<li><a href="tel:+380636047474"><i class="fas fa-phone"></i> +380636047474</a></li>
+					<li><a href="mailto:mail.gmail.com"><i class="fas fa-envelope"></i>
+					mail.gmail.com</a></li>
+				</ul>
+			</div>
+
+			<div class="footer__payment">
+				<h3 class="footer-title footer__payment-title">Мы принимаем</h3>
+				<i class="fab fa-cc-visa"></i>
+				<i class="fab fa-cc-mastercard"></i>
+				<i class="fab fa-cc-discover"></i>
+				<i class="fab fa-cc-amex"></i>
+				<i class="fab fa-cc-stripe"></i>
+				<i class="fab fa-cc-paypal"></i>
+				<div class="footer__payment-item"></div>
+				<div class="footer__payment-item"></div>
+				<div class="footer__payment-item"></div>
+				<div class="footer__payment-item"></div>
+				<div class="footer__payment-item"></div>
+			</div>
+
+			<p class="footer__base">
+				Розробник <span>Unruled Lab</span>
+			</p>
+		</div>
+	</footer>
+
+	<div class="popup">
+		<form id="form-quest" action="#" class="form popup-content">
+			<h3 class="form__title">Есть вопросы? Задайте их нам</h3>
+			<select class="form__item select">
+				<option value="Тема">Тема</option>
+				<option value="Тема">Тема</option>
+			</select>
+
+			<input class="form__item input" type="mail" placeholder="E-mail" required>
+			<input class="form__item input" type="text" placeholder="Имя" required>
+			<input class="form__item input" type="text" placeholder="Ваш вопрос" required>
+
+			<button type="submit" class="btn form__btn">Отправить</button>
+
+			<span class="popup__close"></span>
+		</form>
+
+		<form id="form-reg" action="#" class="form popup-content">
+			<h3 class="form__title">Регистрация</h3>
+			<input class="form__item input" type="tel" placeholder="Телефон" required>
+			<input class="form__item input" type="mail" placeholder="E-mail" required>
+			<input class="form__item input" type="text" placeholder="Имя" required>
+
+			<button type="submit" class="btn form__btn btnKeep">Продолжить</button>
+
+			<a href="#" class="form__already">У меня уже есть учетная запись</a>
+
+			<span class="popup__close"></span>
+		</form>
+
+		<form id="form-login" action="#" class="form popup-content">
+			<h3 class="form__title">Вход</h3>
+			<input class="form__item input" type="text" placeholder="Логин" required>
+			<input class="form__item input" type="password" placeholder="Пароль" required>
+
+			<button type="submit" class="btn form__btn">Войти</button>
+
+			<a href="#" class="form__already">Зарегистрироватся</a>
+
+			<span class="popup__close"></span>
+		</form>
+
+		<form id="form-confirm" action="#" class="form popup-content">
+			<h3 class="form__title">Подтверждение аккаунта</h3>
+			<p class="form__message">На ваш номер отправлено смс с шестизначним кодом. <br> Введите код, что бы подтвердить номер</p>
+
+			<input type="text" class="input input--code" placeholder="XXXXXX" maxlength="6" required>
+
+			<button type="submit" class="btn form__btn">Отправить</button>
+			<button class="form__already  form__already--btn">Отправить код повторно</button>
+
+			<span class="popup__close"></span>
+		</form>
+		<form id="form-apply" action="#" class="form popup-content">
+			<h3 class="form__title">Заявить о мошеннике</h3>
+			<select class="form__item select">
+				<option value="Тема">Площадка</option>
+				<option value="Тема">Тема</option>
+			</select>
+
+			<input class="form__item input" type="tel" placeholder="Номер карты" required>
+			<input class="form__item input" type="text" placeholder="ФИО владельца" required>
+
+
+			<div class="doc-box">
+				<label class="doc-add">
+					<input type="file">	
+					<span class="doc-add__icon">
+						<i class="far fa-file"></i>
+					</span>
+
+					<span class="doc-add__text">Добавить файл</span>
+				</label>
+			</div>
+
+			<button type="submit" class="btn form__btn">Отправить</button>
+
+			<span class="popup__close"></span>
+		</form>
+
+		<form id="form-password" action="#" class="form popup-content">
+			<h3 class="form__title">Восстновление пароля</h3>
+
+			<div class="validation-box">
+				<input class="form__item input" type="password" placeholder="Новый пароль" required>
+				<i class="fas fa-snowflake"></i>
+			</div>
+
+			<div class="validation-box">
+				<input class="form__item input" type="password" placeholder="Повторить пароль" required>
+				<i class="fas fa-snowflake"></i>
+			</div>
+
+			<div class="validation-error"><i class="fas fa-snowflake"></i> Поле заполнено неверно</div>
+			<button type="submit" class="btn form__btn">Отправить</button>
+
+			<span class="popup__close"></span>
+		</form>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	<script src="dist/libs/common.js"></script>
+</body>
+</html>

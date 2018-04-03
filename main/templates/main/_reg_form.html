@@ -1,24 +1,21 @@
-{% load static %}
-<div id="reg" style="">
 
-        <p class="frame-h">создание нового аккаунта</p>
-        <form id="regform" class="sendform"  method="post" action="{% url 'registration' %}">{% csrf_token %}
-          <label for="phone-inp" class="lab"><img src="{% static 'img/phone.png' %}"></label>
-          <input type="phone"  placeholder="введите ваш номер телефона" id="phone-inp" name="phone" value="{{ form.phone.value }}">
+       <form id="form-reg" action="{% url 'registration' %}" method="post" class="form popup-content">{% csrf_token %}
+            <h3 class="form__title">Регистрация</h3>
+            <input class="form__item input" type="tel" placeholder="Телефон" name="phone" required>
+            <input class="form__item input" type="mail" placeholder="E-mail" name="email">
+            <input class="form__item input" type="text" placeholder="Имя" name="first_name" required>
+            <input class="form__item input" type="password" placeholder="Введите ваш пароль" name="password1" required>
+            <input class="form__item input" type="password" placeholder="Введите ваш пароль еще раз" name="password2" required>
+        
+            <p class="alert-danger-phone"></p>
+            <p class="alert-danger-email"></p>
+            <p class="alert-danger-password1"></p>
+            <p class="alert-danger-password2"></p>
+       
 
-          <label for="email-inp" class="lab"><img src="{% static 'img/email.png' %}"></label>
-          <input type = "email" id="email-inp" placeholder="введите ваш email" name="email" value="{{ form.email.value }}">
+            <button type="submit" class="btn form__btn">Продолжить</button>
 
-          <label for="pass-inp" class="lab"><img src="{% static 'img/pass.png' %}"></label>
-          <input type="password" id="pass-inp" placeholder="введите ваш пароль" name="password1">
-            <input type="password" id="pass-inp" placeholder="введите ваш пароль ещё раз" name="password2">
-          <button class="btn">регистрация</button>
+            <a href="#" class="form__already btnLogin">У меня уже есть учетная запись</a>
 
-
-          <p id="check" style="margin-right:10px;">Я принимаю условия пользовательского соглашения
-          <span id="checkboxDiv" class="checkboxOff">
-          <input type="checkbox" id="rules-inp" style="margin-top:0;" name="accept_rules">
-          </span>
-          	</p>
+            <span class="popup__close"></span>
         </form>
-      </div>

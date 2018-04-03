@@ -1,0 +1,73 @@
+{% extends "main/base.html" %}
+
+{% block meta_title %}Credit-page{% endblock %}
+
+{% block content %}
+
+	<section class="section">
+		<div class="container">
+			<h2 class="section-title">Оформить кредит</h2>
+			<form action="#" class="form-credit">
+				<h3 class="form-credit__title">Сумма кредита</h3>
+				<div class="form-slider">
+					<div id="credit-slider">
+						<div class="ui-slider-helper">
+							<a class='ui-slider-handle'>
+								<span class="ui-slider-val">0 грн</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<h3 class="form-credit__title">Строк кредита</h3>
+
+				<div class="form-slider">
+					<div id="termin-slider">
+						<div class="ui-slider-helper">
+							<a class='ui-slider-handle'>
+								<span class="ui-slider-val">0 дней</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<fieldset class="form-credit__field">
+					<div class="form-credit__item">
+						<label for="credit-name" class="form-credit__label">ФИО</label>
+						<input id="credit-name" type="text" class="form-credit__input" placeholder="Ведите ФИО" required>
+					</div>
+					<div class="form-credit__item">
+						<label for="credit-phone" class="form-credit__label">Номер телефона</label>
+						<input id="credit-phone" type="tel" class="form-credit__input form-credit__input--tel" placeholder="+38 (_ _ _) _ _ _  _ _ _ _" required>
+					</div>
+					<div class="form__item-multiple">
+						<div class="form-credit__item">
+							<label for="credit-passport" class="form-credit__label">Серия паспорта</label>
+							<input id="credit-seria" type="text" class="form-credit__input form-credit__input--serial" placeholder="XX" maxlength="2" required>
+						</div>
+						<div class="form-credit__item">
+							<label for="credit-seria-num" class="form-credit__label">Номер паспорта</label>
+							<input id="credit-seria-num" type="tel" class="form-credit__input form-credit__input--serial-num" placeholder="XXXXXX" maxlength="6" required>
+						</div>
+					</div>
+
+					<div class="form-credit__item">
+						<label for="credit-id" class="form-credit__label">ИНН</label>
+						<input id="credit-id" type="text" class="form-credit__input form-credit__input--serial-id" placeholder="XXXXXXXXXX" maxlength="10" required>
+					</div>
+					<div class="form-credit__item">
+						<label for="credit-mail" class="form-credit__label">Почта</label>
+						<input id="credit-mail" type="text" class="form-credit__input" placeholder="Введите ваш e-mail" required>
+					</div>
+
+					<div class="b-checkbox">
+						<input id="credit-check" type="checkbox">
+						<label for="credit-check">Я соглашаюсь с <a href="#" class="b-checkbox__link">правилами обработки данных</a></label>	
+					</div>
+
+					<button class="form__btn-apply">Отправить</button>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+
+{% include "main/online_decision.html" %}
+{% endblock %}

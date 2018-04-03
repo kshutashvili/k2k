@@ -1,0 +1,9 @@
+       <form id="form-confirm" class="form popup-content" method="post" action="{% url 'verify_contact' 'phone' %}">{% csrf_token %}
+            <h3 class="form__title">Подтверждение аккаунта</h3>
+            <p class="form__message">На ваш номер отправлено смс с шестизначним кодом. <br> Введите код, что бы подтвердить номер</p>
+
+            <input type="text" class="input input--code" placeholder="XXXXXX" maxlength="6" name="code" required>
+            <button type="submit" class="btn form__btn">Отправить</button>
+            <button class="form__already  form__already--btn">Отправить код повторно</button>
+            <span class="popup__close"></span>
+        </form>
