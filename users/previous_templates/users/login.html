@@ -1,6 +1,8 @@
-
+{% extends 'main/base.html' %}
+{% block content %}
     {% if not request.user.is_authenticated %}
         {% include 'main/_login_pass_form.html' %}
     {% else %}
         {% include 'main/notavailable_msg.html'%}
     {% endif %}
+{% endblock %}

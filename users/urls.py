@@ -1,13 +1,15 @@
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
-
+from django.views.generic.detail import DetailView
 from users.views import RegView, VerifyContactView
-from users.models import ContactVerification
+from users.views import UserDetailView, UserUpdateView, user_login
+from users.models import ContactVerification, User
 
 
 urlpatterns = [
-    url(r'^login/$', auth_views.login, name='login',
-        kwargs={'template_name': 'users/login.html'}),
+    # url(r'^login/$', auth_views.login, name='login',
+    #     kwargs={'template_name': 'users/login.html'}),
+    url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout',
         kwargs={'next_page': '/'}),
     url(r'^create/$', RegView.as_view(), name='registration'),
@@ -33,4 +35,8 @@ urlpatterns = [
     url(r'^password/reset/done/$', auth_views.password_reset_complete,
         kwargs={'template_name': 'users/password_reset_done.html'},
         name='password_reset_complete'),
+    url(r'^private/$', UserDetailView.as_view(), name='user_detail'),
+    url(r'^edit/$', UserUpdateView.as_view(), name='user_edit'),
+
+
 ]
