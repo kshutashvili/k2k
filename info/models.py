@@ -33,8 +33,8 @@ class LandingTabManager(models.Manager):
 
 class LandingTab(models.Model):
     class Meta:
-        verbose_name = 'Вкладка на лендинге'
-        verbose_name_plural = 'Вкладки на лендинге'
+        verbose_name = 'Вкладка на лендинге (Кредиты)'
+        verbose_name_plural = 'Вкладки на лендинге (Кредиты)'
         ordering = ('order',)
 
     def __unicode__(self):
@@ -45,9 +45,30 @@ class LandingTab(models.Model):
     objects = LandingTabManager()
 
     order = models.IntegerField('Порядок', default=0)
-    content = models.OneToOneField(Flatpage, verbose_name='Страница',
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
                                    limit_choices_to={'is_draft': False},
                                    blank=True, null=True)
+
+
+
+class LandingTabTransfer(models.Model):
+    class Meta:
+        verbose_name = 'Вкладка на лендинге (Переводы)'
+        verbose_name_plural = 'Вкладки на лендинге (Переводы)'
+        ordering = ('order',)
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
+
 
 
 class QuestionManager(models.Manager):
@@ -57,6 +78,12 @@ class QuestionManager(models.Manager):
 
 
 class Question(models.Model):
+    credit = 'credit'
+    transfers = 'transfers'
+    CHOICES = (
+        (credit, 'Кредит'),
+        (transfers, 'Переводы')
+        )
     class Meta:
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
@@ -67,6 +94,9 @@ class Question(models.Model):
 
     objects = QuestionManager()
 
+    theme = models.CharField('Тема', max_length=20, choices=CHOICES, default=credit)
+    email = models.EmailField()
+    name = models.CharField('Имя',max_length=200)
     question = models.TextField('Вопрос')
     answer = models.TextField('Ответ', blank=True, null=True)
     order = models.IntegerField('Порядок', default=0)

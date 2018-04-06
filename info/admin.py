@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
 
-from info.models import Flatpage, LandingTab, Question, Contact
+from info.models import Flatpage, LandingTab, LandingTabTransfer, Question, Contact
 
 
 class ChangeUrl(object):
@@ -52,10 +52,22 @@ class LandingTabAdmin(admin.ModelAdmin):
     is_draft.short_description = 'Черновик'
 
 
+@admin.register(LandingTabTransfer)
+class LandingTabTransferAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'content_url', 'order', 'is_draft')
+
+    content_url = ChangeUrl('content', descr='Страница')
+
+    def is_draft(self, obj):
+        return obj.content and obj.content.is_draft
+    is_draft.boolean = True
+    is_draft.short_description = 'Черновик'
+
+
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('question', 'answer_preview', 'is_draft', 'order')
-    list_filter = ('is_draft',)
+    list_display = ('question', 'answer_preview', 'theme', 'is_draft', 'order')
+    list_filter = ('is_draft', 'theme')
     actions = [set_draft, publish]
 
     def answer_preview(self, obj):

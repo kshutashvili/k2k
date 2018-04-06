@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from info.models import LandingTab, Question
+from info.forms import QuestionForm
 from users.forms import ContactVerificationForm
 
 # def landing(request):
@@ -13,8 +14,17 @@ from users.forms import ContactVerificationForm
 #                                                  'questions': questions})
 
 def landing(request):
-    return render(request, 'main/landing.html', {})
+    question_form = QuestionForm(request.POST)
+    tabs = LandingTab.objects.actual().select_related('content')
+    questions = Question.objects.answered().filter(theme='credit')
+    context = {
+        'questions': questions,
+        'question_form': question_form,
+        'tabs': tabs
+        }
+    return render(request, 'main/landing.html', context)
 
 
 def credit_page(request):
-    return render(request, 'main/credit_page.html', {})
+    tabs = LandingTab.objects.actual().select_related('content')
+    return render(request, 'main/credit_page.html', {'tabs': tabs})

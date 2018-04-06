@@ -1,5 +1,33 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% block meta_title %}Переводы{% endblock %}
+{% block menu_header %}
+  <main class="header__main">
+            <div class="container">
+                <a href="{% url 'landing' %}" class="b-logo">
+                    <img src="{% static 'img/logo.png' %}" alt="logo">
+                </a>
+
+                <button class="mobile-menu">
+                    <div class="mobile-menu__sandwich">
+                        <span class="mobile-menu__topper"></span>
+                        <span class="mobile-menu__middle"></span>
+                        <span class="mobile-menu__footer"></span>
+                    </div>
+                    <span class="mobile-menu__text">Меню</span>
+                </button>
+
+                <nav class="header__main-nav">
+                {% for tab in tabs %}
+                    <a href="{% url 'transfers' %}#{{ tab.content.slug }}">{{ tab.content.title }}</a>
+                {% endfor %}
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'user_detail' %}">Мой кабинет <i class="fas fa-sign-out-alt"></i></a>
+                    {% endif %}
+                </nav>
+            </div>
+        </main>
+{% endblock %}
 {% block content %}
 	<section class="section">
 		<div class="container">
