@@ -1,0 +1,12 @@
+    <section class="faq">
+        <div class="container">
+            <form action="{% url 'ask-question' %}" class="form" method="post">
+                <h3 class="form__title">Есть вопросы? Задайте их нам</h3>
+                {{ question_form.theme }}
+                <input class="form__item input" type="email" placeholder="E-mail" name="email" required>
+                <input class="form__item input" type="text" placeholder="Имя" name="name" required>
+                <input class="form__item input" type="text" placeholder="Ваш вопрос" name="question" required>
+                <button type="submit" class="btn form__btn">Отправить</button>
+            </form>
+        </div>
+    </section>
