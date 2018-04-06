@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 from users.forms import RegForm, ContactVerificationForm
@@ -48,6 +49,10 @@ class RegView(FormView):
 
 class VerifyContactView(LoginRequiredMixin, View):
     form_class = ContactVerificationForm
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(VerifyContactView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         if self.request.is_ajax():
