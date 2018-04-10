@@ -7,6 +7,13 @@ from django.core.urlresolvers import reverse
 from info import contacts
 
 
+credit = 'credit'
+transfers = 'transfers'
+CHOICES = (
+    (credit, 'Кредит'),
+    (transfers, 'Переводы')
+    )
+
 
 class Flatpage(models.Model):
     class Meta:
@@ -50,7 +57,6 @@ class LandingTab(models.Model):
                                    blank=True, null=True)
 
 
-
 class LandingTabTransfer(models.Model):
     class Meta:
         verbose_name = 'Вкладка на лендинге (Переводы)'
@@ -68,22 +74,35 @@ class LandingTabTransfer(models.Model):
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
                                    limit_choices_to={'is_draft': False},
                                    blank=True, null=True)
+    
 
+class LandingTabExtra(models.Model):
+    class Meta:
+        verbose_name = 'Верхнее меню'
+        verbose_name_plural = 'Верхнее меню'
+        ordering = ('order',)
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
 
 
 class QuestionManager(models.Manager):
     def answered(self, *args, **kwargs):
-        kwargs['is_draft'] = False
+        kwargs['is_draft'] = False 
         return self.filter(*args, **kwargs)
 
 
 class Question(models.Model):
-    credit = 'credit'
-    transfers = 'transfers'
-    CHOICES = (
-        (credit, 'Кредит'),
-        (transfers, 'Переводы')
-        )
+   
     class Meta:
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
@@ -135,3 +154,129 @@ class Contact(models.Model):
     def get_link(self):
         return self.get_type().format_link(self.identifier)
 
+
+class MainBlock(models.Model):
+    class Meta:
+        verbose_name = 'Основной блок'
+        verbose_name_plural = 'Основной блок'
+
+    def __unicode__(self):
+        return '{}: {}'.format(self.page, self.title)
+
+    page = models.CharField('Страница лендинга',
+                            max_length=20,
+                            choices=CHOICES,
+                            default=credit)
+    title = models.CharField('Заголовок', max_length=250)
+    text = models.TextField('Текст')
+    main_image = models.ImageField('Изображение', upload_to='images/')
+    extra_image = models.ImageField('Дополнительное изображения', upload_to='images/')
+    button1 = models.CharField('Название первой кнопки', max_length=50)
+    button2 = models.CharField('Название второй кнопки', max_length=50)
+
+
+class FooterMenuBlock1Credit(models.Model):
+    class Meta:
+        verbose_name = 'Меню подвала - Кредит(Блок 1)'
+        verbose_name_plural = 'Меню подвала - Кредит (Блок 1)'
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
+
+class FooterMenuBlock2Credit(models.Model):
+    class Meta:
+        verbose_name = 'Меню подвала - Кредит (Блок 2)'
+        verbose_name_plural = 'Меню подвала - Кредит (Блок 2)'
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
+
+
+class FooterMenuBlock3Credit(models.Model):
+    class Meta:
+        verbose_name = 'Меню подвала - Кредит (Блок 3)'
+        verbose_name_plural = 'Меню подвала - Кредит (Блок 3)'
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
+
+
+class FooterMenuBlock1Transfer(models.Model):
+    class Meta:
+        verbose_name = 'Меню подвала - Переводы (Блок 1)'
+        verbose_name_plural = 'Меню подвала - Переводы (Блок 1)'
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
+
+
+class FooterMenuBlock2Transfer(models.Model):
+    class Meta:
+        verbose_name = 'Меню подвала для - Переводы (Блок 2)'
+        verbose_name_plural = 'Меню подвала - Переводы (Блок 2)'
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
+
+
+class FooterMenuBlock3Transfer(models.Model):
+    class Meta:
+        verbose_name = 'Меню подвала - Переводы (Блок 3)'
+        verbose_name_plural = 'Меню подвала - Переводы (Блок 3)'
+
+    def __unicode__(self):
+        if self.content:
+            return self.content.title
+        return 'Свободная вкладка #%i' % self.order
+
+    objects = LandingTabManager()
+
+    order = models.IntegerField('Порядок', default=0)
+    content = models.ForeignKey(Flatpage, verbose_name='Страница',
+                                   limit_choices_to={'is_draft': False},
+                                   blank=True, null=True)
