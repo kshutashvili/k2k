@@ -11,7 +11,7 @@ from info.models import (
     Flatpage, LandingTab, LandingTabTransfer, Question, Contact, MainBlock,
     FooterMenuBlock1Credit, FooterMenuBlock2Credit, FooterMenuBlock3Credit,
     FooterMenuBlock1Transfer, FooterMenuBlock2Transfer, FooterMenuBlock3Transfer,
-    LandingTabExtra
+    LandingTabExtra, Privileges
     )
 
 
@@ -116,6 +116,12 @@ class MainBlockAdmin(admin.ModelAdmin):
     form = MainBlockAdminForm
     list_display = ('title', 'page')
     list_filter = ('page',)
+
+
+@admin.register(Privileges)
+class PrivilegesAdmin(admin.ModelAdmin):
+    list_display = ('content', 'draft')
+    list_filter = ('draft',)
 
 
 admin.site.register(LandingTabExtra)

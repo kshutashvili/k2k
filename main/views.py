@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from info.models import (
     LandingTab, Question, MainBlock, FooterMenuBlock1Credit,
-    FooterMenuBlock2Credit, FooterMenuBlock3Credit)
+    FooterMenuBlock2Credit, FooterMenuBlock3Credit, Privileges)
 from info.forms import QuestionForm
 from users.forms import ContactVerificationForm
 
@@ -23,6 +23,7 @@ def landing(request):
     footer_menu1 = FooterMenuBlock1Credit.objects.actual().select_related('content')
     footer_menu2 = FooterMenuBlock2Credit.objects.actual().select_related('content')
     footer_menu3 = FooterMenuBlock3Credit.objects.actual().select_related('content')
+    privileges = Privileges.objects.filter(page='credit', draft=False)
     context = {
         'questions': questions,
         'question_form': question_form,
@@ -30,7 +31,8 @@ def landing(request):
         'main_block': main_block,
         'footer_menu1': footer_menu1,
         'footer_menu2': footer_menu2,
-        'footer_menu3': footer_menu2
+        'footer_menu3': footer_menu2,
+        'privileges': privileges
         }
     return render(request, 'main/landing.html', context)
 

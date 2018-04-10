@@ -4,7 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from info.forms import QuestionForm
 from info.models import (
     Question, LandingTabTransfer, MainBlock, FooterMenuBlock1Transfer,
-    FooterMenuBlock2Transfer, FooterMenuBlock3Transfer)
+    FooterMenuBlock2Transfer, FooterMenuBlock3Transfer, Privileges
+    )
 from users.views import VerifiedPhoneRequiredMixin
 
 
@@ -24,6 +25,7 @@ class TransferView(LoginRequiredMixin,
             ).select_related('content')
         context['footer_menu3'] = FooterMenuBlock3Transfer.objects.actual(
             ).select_related('content')
+        context['privileges'] = Privileges.objects.filter(page='transfers', draft=False)
         context['question_form'] = QuestionForm()
         return context 
 

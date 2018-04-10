@@ -74,30 +74,13 @@
 	<section class="media-section">
 		<div class="container">
 			<div class="media">
-				<div class="media__item">
-					<img src="{% static 'img/icons/advanteges/smartphone.png' %}" alt="smartphone" class="media__item-img">
-					<p class="media__item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos quia blanditiis temporibus quas, incidunt.</p>
-				</div>
-				<div class="media__item">
-					<img src="{% static 'img/icons/advanteges/money.png' %}" alt="money" class="media__item-img">
-					<p class="media__item-text">Harum, nobis asperiores at temporibus quo nostrum repellat itaque repudiandae vero dignissimos, in quis expedita </p>
-				</div>
-				<div class="media__item">
-					<img src="{% static 'img/icons/advanteges/wallet.png' %}" alt="wallet" class="media__item-img">
-					<p class="media__item-text">Odio in unde ratione laboriosam quo, architecto doloremque nobis, neque autem consequuntur, voluptas et itaque suscipit. </p>
-				</div>
-				<div class="media__item">
-					<img src="{% static 'img/icons/advanteges/credit-card.png' %}" alt="credit-card" class="media__item-img">
-					<p class="media__item-text">Voluptate consequatur aspernatur numquam cumque, odit incidunt possimus accusantium dolore.</p>
-				</div>
-				<div class="media__item">
-					<img src="{% static 'img/icons/advanteges/credit-card-color.png' %}" alt="credit-card" class="media__item-img">
-					<p class="media__item-text">Dolorem rem ea iure, voluptas ipsa minima, perferendis impedit eveniet perspiciatis velit harum </p>
-				</div>
-				<div class="media__item">
-					<img src="{% static 'img/icons/advanteges/coin.png' %}" alt="coin" class="media__item-img">
-					<p class="media__item-text">Voluptatum illo in veritatis porro quia velit maiores minus tempora provident, asperiores corrupti doloribus </p>
-				</div>
+			{% for privilege in privileges|slice:':6' %}
+                <div class="media__item">
+                    <img src="{{ privilege.icon.url }}" alt="smartphone" class="media__item-img">
+                    <p class="media__item-text">{{ privilege.content }}</p>
+                </div>
+            {% endfor %}
+            </div>
 			</div>
 		</div>
 	</section>

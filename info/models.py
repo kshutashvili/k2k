@@ -74,7 +74,7 @@ class LandingTabTransfer(models.Model):
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
                                    limit_choices_to={'is_draft': False},
                                    blank=True, null=True)
-    
+
 
 class LandingTabExtra(models.Model):
     class Meta:
@@ -280,3 +280,20 @@ class FooterMenuBlock3Transfer(models.Model):
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
                                    limit_choices_to={'is_draft': False},
                                    blank=True, null=True)
+
+
+class Privileges(models.Model):
+    class Meta:
+        verbose_name = 'Преимущество'
+        verbose_name_plural = 'Преимущества'
+        ordering = ['order']
+
+    def __unicode__(self):
+        return self.content[:50]
+
+    page = models.CharField('Страница', max_length=20, choices=CHOICES, default=credit)
+    icon = models.ImageField('Иконка',upload_to='images/')
+    content = models.TextField('Текст')
+    order = models.IntegerField('Порядок', default=0)
+    draft = models.BooleanField('Черновик', default=False)
+
