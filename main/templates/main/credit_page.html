@@ -1,7 +1,33 @@
 {% extends "main/base.html" %}
-
+{% load static %}
 {% block meta_title %}Credit-page{% endblock %}
+{% block menu_header %}
+     <main class="header__main">
+            <div class="container">
+                <a href="{% url 'landing' %}" class="b-logo">
+                    <img src="{% static 'img/logo.png' %}" alt="logo">
+                </a>
 
+                <button class="mobile-menu">
+                    <div class="mobile-menu__sandwich">
+                        <span class="mobile-menu__topper"></span>
+                        <span class="mobile-menu__middle"></span>
+                        <span class="mobile-menu__footer"></span>
+                    </div>
+                    <span class="mobile-menu__text">Меню</span>
+                </button>
+
+                <nav class="header__main-nav">
+                {% for tab in tabs %}
+                	<a href="{% url 'landing' %}#{{ tab.content.slug }}">{{ tab.content.title }}</a>
+                {% endfor %}
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'user_detail' %}">Мой кабинет <i class="fas fa-sign-out-alt"></i></a>
+                    {% endif %}
+                </nav>
+            </div>
+        </main>
+{% endblock %}
 {% block content %}
 
 	<section class="section">
@@ -70,4 +96,21 @@
 	</section>
 
 {% include "main/online_decision.html" %}
+{% endblock %}
+{% block footer_menu %}
+ <ul class="footer__nav">
+    {% for links in footer_menu1|slice:":5" %}
+    <li><a href="#" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
+ <ul class="footer__nav">
+    {% for links in footer_menu2|slice:":5" %}
+    <li><a href="#" class="footer__nav-link">{{ links.content.title}}</a></li>
+     {% endfor %}
+</ul>
+<ul class="footer__nav">
+    {% for links in footer_menu3|slice:":5" %}
+    <li><a href="#" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
 {% endblock %}

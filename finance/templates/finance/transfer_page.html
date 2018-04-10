@@ -95,6 +95,20 @@
 	</section>
 {% include "main/online_decision.html" %}
 {% endblock %}
-
-
-
+{% block footer_menu %}
+ <ul class="footer__nav">
+    {% for links in footer_menu1|slice:":5" %}
+    <li><a href="#" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
+ <ul class="footer__nav">
+    {% for links in footer_menu2|slice:":5" %}
+    <li><a href="#" class="footer__nav-link">{{ links.content.title}}</a></li>
+     {% endfor %}
+</ul>
+<ul class="footer__nav">
+    {% for links in footer_menu3|slice:":5" %}
+    <li><a href="#" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,20 +1,57 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block meta_title %}Уникальная система кредитования{% endblock %}
+{% block meta_title %}
+    {% for b in main_block|slice:':1' %}
+        {{ b.title }}
+    {% endfor %}
+{% endblock %}
+{% block menu_header %}
+     <main class="header__main">
+            <div class="container">
+                <a href="{% url 'landing' %}" class="b-logo">
+                    <img src="{% static 'img/logo.png' %}" alt="logo">
+                </a>
+
+                <button class="mobile-menu">
+                    <div class="mobile-menu__sandwich">
+                        <span class="mobile-menu__topper"></span>
+                        <span class="mobile-menu__middle"></span>
+                        <span class="mobile-menu__footer"></span>
+                    </div>
+                    <span class="mobile-menu__text">Меню</span>
+                </button>
+
+                <nav class="header__main-nav">
+                {% for tab in tabs %}
+                	<a href="{% url 'landing' %}#{{ tab.content.slug }}">{{ tab.content.title }}</a>
+                {% endfor %}
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'user_detail' %}">Мой кабинет <i class="fas fa-sign-out-alt"></i></a>
+                    {% endif %}
+                </nav>
+            </div>
+        </main>
+{% endblock %}
 {% block content %}
+
 	<section class="main-section">
 		<div class="container">
+        {% for b in main_block|slice:':1' %}
 			<div class="main">
 				<main class="main-content">
-					<h1 class="main-content__title">Уникальная система <span>кредитования</span></h1>
-					<p class="main-content__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto voluptate cumque ea corrupti nostrum accusamus! Iste nam mollitia dolores quos ea maxime? Reiciendis delectus tenetur voluptatibus, officia tempora. Nobis, temporibus.</p>
+					<h1 class="main-content__title">{{ b.title }}</h1>
+					<p class="main-content__text">{{ b.text }}</p>
 
 					<div class="btn-group">
-						<a href="{% url 'credit-page' %}" class="btn btn-prime">Получить кредит</a>
-						<button class="btn btn-prime btnRegistration">Регистрация</button>
+						<a href="{% url 'credit-page' %}" class="btn btn-prime">
+                        {% if b.button1 %}{{ b.button1 }}{% else %}
+                        Получить кредит{% endif %}</a>
+						<button class="btn btn-prime btnRegistration">
+                        {% if b.button2 %}{{ b.button2 }}{% else %}
+                        Регистрация{% endif %}
+                        </button>
 					</div>
-
 					<div class="main-content__tab">
 						<a href="{% url 'landing' %}" class="main-content__tab-link active">Оформить кредит</a>
 						<a href="{% url 'transfers' %}" class="main-content__tab-link"{% if not user.is_authenticated %} onclick="event.preventDefault(); var popup = new Popup(); popup.open($('.popup #form-login'));"{% endif %}>Переводы</a>
@@ -23,11 +60,12 @@
 				<!--img height must be less than 280px-->
 				<div class="main__image">
 					<img src="{% static 'img/macbook.png' %}" alt="macbook" class="main__image-prime">
-					<img src="{% static 'img/content-1.jpg' %}" alt="content" class="main__image-content">
-					<img src="{% static 'img/pig.png' %}" alt="pig" class="main__image-abs">
+					<img src="{% if not b.main_image %}{{ b.main_image.url }}{% else %}{% static 'img/content-1.jpg'%}{% endif %}" alt="content" class="main__image-content">
+					<img src="{% if b.extra_image %}{{ b.extra_image.url }}{% else %}{% static 'img/pig.png' %}{% endif %}" alt="pig" class="main__image-abs">
 				</div>
 			</div>
 		</div>
+        {% endfor %}
 	</section>
 
 	<section class="media-section">
@@ -60,7 +98,6 @@
 			</div>
 		</div>
 	</section>
-
 	<section class="section">
 		<div class="container">
 			<h2 class="section-title">Оформить кредит</h2>
@@ -127,6 +164,36 @@
 	</section>
 
 {% include "main/online_decision.html" %}
-{% include "main/questions.html" %}
+{% if questions|length > 0 %}
+   <section class="question-section">
+        <div class="container">
+            <h2 class="section-title">Вопрос – ответ</h2>
+            {% for q in questions %}
+            <div class="question spoiler">
+                <h3 class="question__title">{{ q.question }}<i class="fas fa-angle-down"></i></h3>
+                <p class="question__answer">{{ q.answer }}</p>
+            </div>
+            {% endfor %}
 
+           </div>
+    </section>
+{% endif %}
+    {% include "info/question_form.html" %}
+{% endblock %}
+{% block footer_menu %}
+ <ul class="footer__nav">
+    {% for links in footer_menu1|slice:":5" %}
+    <li><a href="{% url 'landing' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
+ <ul class="footer__nav">
+    {% for links in footer_menu2|slice:":5" %}
+    <li><a href="{% url 'landing' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+     {% endfor %}
+</ul>
+<ul class="footer__nav">
+    {% for links in footer_menu3|slice:":5" %}
+    <li><a href="{% url 'landing' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
 {% endblock %}

@@ -1,7 +1,11 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block meta_title %}Денежные переводы{% endblock %}
+{% block meta_title %}
+    {% for b in main_block|slice:':1' %}
+        {{ b.title }}
+    {% endfor %}
+{% endblock %}
 
 {% block menu_header %}
   <main class="header__main">
@@ -35,14 +39,20 @@
 
 	<section class="main-section">
 		<div class="container">
+        {% for b in main_block|slice:':1' %}
 			<div class="main">
 				<main class="main-content">
-					<h1 class="main-content__title">Денежные переводы</h1>
-					<p class="main-content__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto voluptate cumque ea corrupti nostrum accusamus! Iste nam mollitia dolores quos ea maxime? Reiciendis delectus tenetur voluptatibus, officia tempora. Nobis, temporibus.</p>
+					<h1 class="main-content__title">{{ b.title }}</h1>
+					<p class="main-content__text">{{ b.text }}</p>
 
 					<div class="btn-group">
-						<a href="{% url 'transfers-page' %}" class="btn btn-prime">Перевести деньги</a>
-						<button class="btn btn-prime btnRegistration">Регистрация</button>
+						<a href="{% url 'transfers-page' %}" class="btn btn-prime">
+                        {% if b.button1 %}{{ b.button1 }}{% else %}Перевести деньги
+                        {% endif %}
+                        </a>
+						<button class="btn btn-prime btnRegistration">
+                        {% if b.button2 %}{{ b.button2 }}{% else %}
+                        Регистрация{% endif %}</button>
 					</div>
 
 					<div class="main-content__tab">
@@ -53,10 +63,11 @@
 				<!--img height must be less than 280px-->
 				<div class="main__image">
 					<img src="{% static 'img/macbook.png' %}" alt="macbook" class="main__image-prime">
-					<img src="{% static 'img/content-2.jpg' %}" alt="content" class="main__image-content">
-					<img src="{% static 'img/pig.png' %}" alt="pig" class="main__image-abs">
+					<img src="{% if b.main_image %}{{ b.main_image.url }}{% else %}{% static 'img/content-2.jpg' %}{% endif %}" alt="content" class="main__image-content">
+					<img src="{% if b.extra_image %}{{ b.extra_image.url }}{% else %}{% static 'img/pig.png' %}{% endif %}" alt="pig" class="main__image-abs">
 				</div>
 			</div>
+            {% endfor  %}
 		</div>
 	</section>
 
@@ -169,6 +180,22 @@
         </div>
     </section>
     {% endif %}
-
     {% include "info/question_form.html" %}
+{% endblock %}
+{% block footer_menu %}
+ <ul class="footer__nav">
+    {% for links in footer_menu1|slice:":5" %}
+    <li><a href="{% url 'transfers' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
+ <ul class="footer__nav">
+    {% for links in footer_menu2|slice:":5" %}
+    <li><a href="{% url 'transfers' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+     {% endfor %}
+</ul>
+<ul class="footer__nav">
+    {% for links in footer_menu3|slice:":5" %}
+    <li><a href="{% url 'transfers' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+    {% endfor %}
+</ul>
 {% endblock %}

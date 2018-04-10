@@ -1,4 +1,5 @@
 {% load static %}
+{% load extra_menu_header %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,85 +10,28 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    
-    <header class="header"> 
-        <div class="header__top">
-            <div class="container">
-            
-                <p class="header__login">
-                    Добро пожаловать <a class="btnLogin" href="#">Войти</a> или <a class="btnRegistration" href="#">Зарегестрироватся</a>
-                </p>
-            
-                <nav class="header__top-nav">
-                    <a href="#">Переводы</a>
-                    <a href="#">Вопрос-ответ</a>
-                    <a href="#">Получить кредит</a>
-                    <a href="#">Контакты</a>
-                </nav>
-                <ul class="header__social">
-                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                </ul>
-            </div>
-        </div>
+    <header class="header">
+{% block extra_header %}
 
-        <main class="header__main">
-            <div class="container">
-                <a href="{% url 'landing' %}" class="b-logo">
-                    <img src="{% static 'img/logo.png' %}" alt="logo">
-                </a>
+    {% extra_menu_header %}
+    {% endblock %}
 
-                <button class="mobile-menu">
-                    <div class="mobile-menu__sandwich">
-                        <span class="mobile-menu__topper"></span>
-                        <span class="mobile-menu__middle"></span>
-                        <span class="mobile-menu__footer"></span>
-                    </div>
-                    <span class="mobile-menu__text">Меню</span>
-                </button>
-
-                <nav class="header__main-nav">
-                    <a href="#">Переводы</a>
-                    <a href="#">Преимущества</a>
-                    <a href="#">Бизнесу</a>
-                    <a href="#">Благотворительность</a>
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'user_detail' %}">Мой кабинет <i class="fas fa-sign-out-alt"></i></a>
-                    {% endif %}
-                </nav>
-            </div>
-        </main>
+{% block menu_header %}
+{% endblock %}
     </header>
+
 
 {% block content %}
 {% endblock %}
 
 
- 
     <footer class="footer">
         <div class="container">
             <a href='#' class="b-logo">
                 <img src="{% static 'img/logo.png' %}" alt="logo">
             </a>
-            <ul class="footer__nav">
-                <li><a href="#" class="footer__nav-link">История</a></li>
-                <li><a href="#" class="footer__nav-link">Правовая информация</a></li>
-                <li><a href="#" class="footer__nav-link">Гарантии</a></li>
-                <li><a href="#" class="footer__nav-link">Контакты</a></li>
-            </ul>
-            <ul class="footer__nav">
-                <li><a href="#" class="footer__nav-link">Вход/Регистрация</a></li>
-                <li><a href="#" class="footer__nav-link">Преимущества</a></li>
-                <li><a href="#" class="footer__nav-link">Бизнесу</a></li>
-                <li><a href="#" class="footer__nav-link">Благотворительность</a></li>
-            </ul>
-            <ul class="footer__nav">             
-                <li><a href="#" class="footer__nav-link">Кредиты</a></li>
-                <li><a href="#" class="footer__nav-link">Получить Кредит</a></li>
-                <li><a href="#" class="footer__nav-link">Ограничения</a></li>
-                <li><a href="#" class="footer__nav-link">Правовая информация</a></li>
-                <li><a href="#" class="footer__nav-link">Погасить кредит</a></li>
-            </ul>
+            {% block footer_menu %}
+            {% endblock %}
 
             <div class="footer__contacts">
                 <h3 class="footer-title">Контакты</h3>
@@ -104,7 +48,7 @@
                     {% endfor %}
                 </ul>
             </div>
-
+            
             <div class="footer__payment">
                 <h3 class="footer-title footer__payment-title">Мы принимаем</h3>
                 <i class="fab fa-cc-visa"></i>

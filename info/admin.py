@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django import forms
+from django.forms.utils import ErrorList
 from django.contrib import admin
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
 
-from info.models import Flatpage, LandingTab, LandingTabTransfer, Question, Contact
+from info.models import (
+    Flatpage, LandingTab, LandingTabTransfer, Question, Contact, MainBlock,
+    FooterMenuBlock1Credit, FooterMenuBlock2Credit, FooterMenuBlock3Credit,
+    FooterMenuBlock1Transfer, FooterMenuBlock2Transfer, FooterMenuBlock3Transfer
+    )
 
 
 class ChangeUrl(object):
@@ -90,3 +97,29 @@ class ContactAdmin(admin.ModelAdmin):
     def set_not_actual(self, request, queryset):
         self.set_actual(request, queryset, value=False)
     set_not_actual.short_description = 'Отметить как неактуальные'
+
+
+class MainBlockAdminForm(forms.ModelForm):
+    model = MainBlock
+    fields = '__all__'
+
+    def clean(self):
+        if MainBlock.objects.count() > 2:
+            self._errors.setdefault('__all__', ErrorList()).append(
+                'Вы можете добавить только два основных блока.')
+        return self.cleaned_data
+
+
+@admin.register(MainBlock)
+class MainBlockAdmin(admin.ModelAdmin):
+    form = MainBlockAdminForm
+    list_display = ('title', 'page')
+    list_filter = ('page',)
+
+
+admin.site.register(FooterMenuBlock1Credit)
+admin.site.register(FooterMenuBlock2Credit)
+admin.site.register(FooterMenuBlock3Credit)
+admin.site.register(FooterMenuBlock1Transfer)
+admin.site.register(FooterMenuBlock2Transfer)
+admin.site.register(FooterMenuBlock3Transfer)

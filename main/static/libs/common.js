@@ -80,6 +80,8 @@ window.onload = function() {
 			'min-height': currentHeight + 130 + 'px'
 		})
 	}
+
+
 };
 
 function slider(el, min, max, type) {
@@ -138,6 +140,15 @@ function getTarget(obj) {
 
 $(document).ready(function() {
 
+    // Change color in the last word in main titles
+    $('h1').html(function(){    
+  
+        var text= $(this).text().split(' ');
+        var last = text.pop();
+        
+        return text.join(' ') + (text.length > 0 ? ' <span>'+last+'</span>' : last);   
+    });
+
 
 // Login 
 $('#form-login').submit(function(e){
@@ -167,6 +178,7 @@ $('#form-login').submit(function(e){
 
 // Registration
 $('#form-reg').submit(function(e){
+    alert($(this).serialize());
         e.preventDefault();
         $.ajax({
         	type: $(this).attr('method'),
@@ -195,7 +207,6 @@ $('#form-reg').submit(function(e){
        	}
 
     })
-})
 
 // Sms confirm
 $('#form-confirm').submit(function(e){
@@ -216,3 +227,5 @@ $('#form-confirm').submit(function(e){
         })
     })
 
+
+})

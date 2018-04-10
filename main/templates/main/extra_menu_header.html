@@ -1,0 +1,19 @@
+
+     <div class="header__top">
+            <div class="container">
+            
+                <p class="header__login">
+                    Добро пожаловать <a class="btnLogin" href="#">Войти</a> или <a class="btnRegistration" href="#">Зарегестрироватся</a>
+                </p>
+            
+                <nav class="header__top-nav">
+                {% for menu in extra_menu %}
+                    <a href="#{{ menu.content.slug }}">{{ menu.content.title }}</a>
+                {% endfor %}
+                </nav>
+                <ul class="header__social">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
