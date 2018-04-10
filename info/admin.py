@@ -10,7 +10,8 @@ from django.core.exceptions import ValidationError
 from info.models import (
     Flatpage, LandingTab, LandingTabTransfer, Question, Contact, MainBlock,
     FooterMenuBlock1Credit, FooterMenuBlock2Credit, FooterMenuBlock3Credit,
-    FooterMenuBlock1Transfer, FooterMenuBlock2Transfer, FooterMenuBlock3Transfer
+    FooterMenuBlock1Transfer, FooterMenuBlock2Transfer, FooterMenuBlock3Transfer,
+    LandingTabExtra
     )
 
 
@@ -117,6 +118,7 @@ class MainBlockAdmin(admin.ModelAdmin):
     list_filter = ('page',)
 
 
+admin.site.register(LandingTabExtra)
 admin.site.register(FooterMenuBlock1Credit)
 admin.site.register(FooterMenuBlock2Credit)
 admin.site.register(FooterMenuBlock3Credit)
