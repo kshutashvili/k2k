@@ -12,7 +12,7 @@ transfers = 'transfers'
 CHOICES = (
     (credit, 'Кредит'),
     (transfers, 'Переводы')
-    )
+)
 
 
 class Flatpage(models.Model):
@@ -53,8 +53,8 @@ class LandingTab(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class LandingTabTransfer(models.Model):
@@ -72,8 +72,8 @@ class LandingTabTransfer(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class LandingTabExtra(models.Model):
@@ -91,18 +91,18 @@ class LandingTabExtra(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class QuestionManager(models.Manager):
     def answered(self, *args, **kwargs):
-        kwargs['is_draft'] = False 
+        kwargs['is_draft'] = False
         return self.filter(*args, **kwargs)
 
 
 class Question(models.Model):
-   
+
     class Meta:
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
@@ -113,9 +113,14 @@ class Question(models.Model):
 
     objects = QuestionManager()
 
-    theme = models.CharField('Тема', max_length=20, choices=CHOICES, default=credit)
+    theme = models.CharField(
+        'Тема',
+        max_length=20,
+        choices=CHOICES,
+        default=credit
+    )
     email = models.EmailField()
-    name = models.CharField('Имя',max_length=200)
+    name = models.CharField('Имя', max_length=200)
     question = models.TextField('Вопрос')
     answer = models.TextField('Ответ', blank=True, null=True)
     order = models.IntegerField('Порядок', default=0)
@@ -170,7 +175,10 @@ class MainBlock(models.Model):
     title = models.CharField('Заголовок', max_length=250)
     text = models.TextField('Текст')
     main_image = models.ImageField('Изображение', upload_to='images/')
-    extra_image = models.ImageField('Дополнительное изображения', upload_to='images/')
+    extra_image = models.ImageField(
+        'Дополнительное изображения',
+        upload_to='images/'
+    )
     button1 = models.CharField('Название первой кнопки', max_length=50)
     button2 = models.CharField('Название второй кнопки', max_length=50)
 
@@ -189,8 +197,9 @@ class FooterMenuBlock1Credit(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
+
 
 class FooterMenuBlock2Credit(models.Model):
     class Meta:
@@ -206,8 +215,8 @@ class FooterMenuBlock2Credit(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class FooterMenuBlock3Credit(models.Model):
@@ -224,8 +233,8 @@ class FooterMenuBlock3Credit(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class FooterMenuBlock1Transfer(models.Model):
@@ -242,8 +251,8 @@ class FooterMenuBlock1Transfer(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class FooterMenuBlock2Transfer(models.Model):
@@ -260,8 +269,8 @@ class FooterMenuBlock2Transfer(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class FooterMenuBlock3Transfer(models.Model):
@@ -278,8 +287,8 @@ class FooterMenuBlock3Transfer(models.Model):
 
     order = models.IntegerField('Порядок', default=0)
     content = models.ForeignKey(Flatpage, verbose_name='Страница',
-                                   limit_choices_to={'is_draft': False},
-                                   blank=True, null=True)
+                                limit_choices_to={'is_draft': False},
+                                blank=True, null=True)
 
 
 class Privileges(models.Model):
@@ -291,9 +300,13 @@ class Privileges(models.Model):
     def __unicode__(self):
         return self.content[:50]
 
-    page = models.CharField('Страница', max_length=20, choices=CHOICES, default=credit)
-    icon = models.ImageField('Иконка',upload_to='images/')
+    page = models.CharField(
+        'Страница',
+        max_length=20,
+        choices=CHOICES,
+        default=credit
+    )
+    icon = models.ImageField('Иконка', upload_to='images/')
     content = models.TextField('Текст')
     order = models.IntegerField('Порядок', default=0)
     draft = models.BooleanField('Черновик', default=False)
-

@@ -18,7 +18,7 @@ class UserChangeForm(BaseUChForm):
 
 
 class RegForm(UserCreationForm):
-    #accept_rules = forms.BooleanField(initial=False, required=True)
+    # accept_rules = forms.BooleanField(initial=False, required=True)
     email = forms.EmailField(required=False)
 
     class Meta(UserCreationForm.Meta):

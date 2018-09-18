@@ -36,15 +36,13 @@ class RegView(FormView):
         user = authenticate(username=user.phone,
                             password=reg_form.cleaned_data['password1'])
         if user is None:
-            pass # TODO: show login error
+            pass  # TODO: show login error
         else:
             login(self.request, user)
         return super(RegView, self).form_valid(reg_form)
 
     def form_invalid(self, reg_form):
         return JsonResponse({'errors': reg_form.errors})
-        # return self.render_to_response(self.get_context_data(reg_form=reg_form),
-        #                                status=400)
 
 
 class VerifyContactView(LoginRequiredMixin, View):
@@ -52,7 +50,9 @@ class VerifyContactView(LoginRequiredMixin, View):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
-        return super(VerifyContactView, self).dispatch(request, *args, **kwargs)
+        return super(VerifyContactView, self).dispatch(
+            request, *args, **kwargs
+        )
 
     def get(self, request, *args, **kwargs):
         if self.request.is_ajax():
@@ -60,7 +60,8 @@ class VerifyContactView(LoginRequiredMixin, View):
                       'type': self.kwargs['ctype']}
             code = ContactVerification.objects.filter(**params)\
                 .order_by('actual_till').last()
-            if code is None or (not code.is_verified() and not code.is_actual()):
+            if (code is None or
+               (not code.is_verified() and not code.is_actual())):
                 code = ContactVerification.objects.create(**params)
             elif code.is_verified():
                 return render(self.request, 'users/verify_contact/result.html')
@@ -79,14 +80,17 @@ class VerifyContactView(LoginRequiredMixin, View):
                        'msg': _('There is no any codes for this contact.')}
             return render(self.request, 'main/message.html', context,
                           status=400)
-        
+
         form = self.form_class(data=self.request.POST)
         if form.is_valid():
             if self.request.is_ajax():
                 if code.code == form.cleaned_data['code']:
                     code.set_verified()
                     code.save()
-                    return render(self.request, 'users/verify_contact/result.html')
+                    return render(
+                        self.request,
+                        'users/verify_contact/result.html'
+                    )
                 code.errors += 1
                 code.save()
                 form.add_error('code', _('Unknown code'))
@@ -99,14 +103,11 @@ def user_login(request):
     if request.method == 'POST':
         request.session.set_test_cookie()
         login_form = AuthenticationForm(request, request.POST)
-        response_data = {}
         if login_form.is_valid():
             if request.is_ajax():
-                user = login(request, login_form.get_user())
-              
+                login(request, login_form.get_user())
         else:
             return JsonResponse({'errors': login_form.errors})
-            
     login_form = AuthenticationForm()
 
     context = {
@@ -116,25 +117,6 @@ def user_login(request):
     }
 
     return render(request, 'users/login.html', context)
-
-# @login_required
-# def user_detail(request):
-
-#     def get_user():
-#         if hasattr(request, 'user'):
-#             return request.user
-#         else:
-#             from django.contrib.auth.models import AnonymousUser
-#             return AnonymousUser()
-
-#     return render(request, 'main/private.html', {
-#         'user': SimpleLazyObject(get_user),
-#         'perms':  lazy(lambda: PermWrapper(get_user()), PermWrapper)(),
-#     })
-
-# @login_required
-# def user_edit(request):
-#     return render(request, 'main/data_change.html', {})
 
 
 class CurrentUserMixin(object):

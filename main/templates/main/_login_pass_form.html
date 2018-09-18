@@ -1,17 +1,15 @@
 
-        <form id="form-login" action="{% url 'login' %}" class="form popup-content" method="post">
-        {% csrf_token %}
-            <h3 class="form__title">Вход</h3>
-            <input type="hidden" name="next" value="{% url 'user_detail' %}">
-            <input class="form__item input" type="text" placeholder="Логин" name="username" required>
-            <input class="form__item input" type="password" placeholder="Пароль" name="password" required>
-          
-                <p class="alert-danger"></p>
-               
-           
-            <button type="submit" class="btn form__btn">Войти</button>
+<form id="form-login" action="{% url 'login' %}" class="form popup-content" method="post">
+{% csrf_token %}
+  <h3 class="form__title">Вход</h3>
+  <input type="hidden" name="next" value="{% url 'user_detail' %}">
+  <input class="form__item input" type="text" placeholder="Логин" name="username" required>
+  <input class="form__item input" type="password" placeholder="Пароль" name="password" required>
+  <p class="alert-danger"></p>
 
-            <a href="#" class="form__already btnRegistration">Зарегистрироватся</a>
+  <button type="submit" class="btn form__btn">Войти</button>
 
-            <span class="popup__close"></span>
-        </form>
+  <a href="#" class="form__already btnRegistration">Зарегистрироватся</a>
+
+  <span class="popup__close"></span>
+</form>

@@ -1,17 +1,20 @@
 {% extends "main/base.html" %}
+
 {% load static %}
+
 {% block meta_title %}Страница не найдена{% endblock %}
+
 {% block content %}
-	<section class="error-section">
-		<div class="container">
-			<div class="error">
-				<img class="error__img" src="{% static 'img/pig.png' %}" alt="pig">
-				<div class="error__info">
-					<span class="error__code">404</span>
-					<p class="error__message">Страница не найдена</p>
-					<a href="{% url 'landing' %}" class="btn btn-prime">На главную</a>
-				</div>
-			</div>
-		</div>
-	</section>
+  <section class="error-section">
+    <div class="container">
+      <div class="error">
+        <img class="error__img" src="{% static 'img/pig.png' %}" alt="pig">
+        <div class="error__info">
+          <span class="error__code">404</span>
+          <p class="error__message">Страница не найдена</p>
+          <a href="{% url 'landing' %}" class="btn btn-prime">На главную</a>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

@@ -5,14 +5,23 @@ from django.forms.utils import ErrorList
 from django.contrib import admin
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
-from django.core.exceptions import ValidationError
 
 from info.models import (
-    Flatpage, LandingTab, LandingTabTransfer, Question, Contact, MainBlock,
-    FooterMenuBlock1Credit, FooterMenuBlock2Credit, FooterMenuBlock3Credit,
-    FooterMenuBlock1Transfer, FooterMenuBlock2Transfer, FooterMenuBlock3Transfer,
-    LandingTabExtra, Privileges
-    )
+    Flatpage,
+    LandingTab,
+    LandingTabTransfer,
+    Question,
+    Contact,
+    MainBlock,
+    FooterMenuBlock1Credit,
+    FooterMenuBlock2Credit,
+    FooterMenuBlock3Credit,
+    FooterMenuBlock1Transfer,
+    FooterMenuBlock2Transfer,
+    FooterMenuBlock3Transfer,
+    LandingTabExtra,
+    Privileges
+)
 
 
 class ChangeUrl(object):
@@ -32,11 +41,15 @@ class ChangeUrl(object):
 
 def set_draft(model_admin, request, queryset, value=True):
     queryset.update(is_draft=value)
+
+
 set_draft.short_description = 'Отметить как черновик'
 
 
 def publish(model_admin, request, queryset):
     set_draft(model_admin, request, queryset, value=False)
+
+
 publish.short_description = 'Опубликовать'
 
 
@@ -56,6 +69,7 @@ class LandingTabAdmin(admin.ModelAdmin):
 
     def is_draft(self, obj):
         return obj.content and obj.content.is_draft
+
     is_draft.boolean = True
     is_draft.short_description = 'Черновик'
 
@@ -68,6 +82,7 @@ class LandingTabTransferAdmin(admin.ModelAdmin):
 
     def is_draft(self, obj):
         return obj.content and obj.content.is_draft
+
     is_draft.boolean = True
     is_draft.short_description = 'Черновик'
 
@@ -82,6 +97,7 @@ class QuestionAdmin(admin.ModelAdmin):
         if obj.answer and len(obj.answer) > 200:
                 return obj.answer[:200] + '...'
         return obj.answer
+
     answer_preview.short_description = 'Ответ'
 
 
@@ -93,10 +109,12 @@ class ContactAdmin(admin.ModelAdmin):
 
     def set_actual(self, request, queryset, value=True):
         queryset.update(is_actual=value)
+
     set_actual.short_description = 'Отметить как актуальные'
 
     def set_not_actual(self, request, queryset):
         self.set_actual(request, queryset, value=False)
+
     set_not_actual.short_description = 'Отметить как неактуальные'
 
 
@@ -107,7 +125,8 @@ class MainBlockAdminForm(forms.ModelForm):
     def clean(self):
         if MainBlock.objects.count() > 2:
             self._errors.setdefault('__all__', ErrorList()).append(
-                'Вы можете добавить только два основных блока.')
+                'Вы можете добавить только два основных блока.'
+            )
         return self.cleaned_data
 
 

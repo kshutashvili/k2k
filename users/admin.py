@@ -31,6 +31,8 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('is_staff', 'is_superuser', 'is_active')
     search_fields = ('phone', 'email')
     ordering = ('-date_joined',)
+
+
 admin.site.register(User, UserAdmin)
 
 
@@ -75,7 +77,8 @@ class HasValueFilter(admin.SimpleListFilter):
             if getattr(self, attr) is None:
                 raise ImproperlyConfigured(
                     "The list filter '%s' does not specify a '%s'."
-                        % (self.__class__.__name__, attr))
+                    % (self.__class__.__name__, attr)
+                )
         super(HasValueFilter, self).__init__(request, params, model,
                                              model_admin)
         if self.field_name is None:
@@ -102,6 +105,7 @@ class VerifiedFilter(HasValueFilter):
     lookup_neg_name = _('Not verified')
 
 
+@admin.register(ContactVerification)
 class ContactVerificationAdmin(admin.ModelAdmin):
     list_display = ('when_created', 'user', 'actual_till', 'is_actual',
                     'is_verified')
@@ -109,4 +113,3 @@ class ContactVerificationAdmin(admin.ModelAdmin):
 
     is_verified = boolfunc('is_verified')
     is_actual = boolfunc('is_actual')
-admin.site.register(ContactVerification, ContactVerificationAdmin)
