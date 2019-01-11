@@ -22,7 +22,7 @@
 
       <nav class="header__main-nav">
         {% for tab in tabs %}
-          <a href="{% url 'transfers' %}#{{ tab.content.slug }}">{{ tab.content.title }}</a>
+          <a href="{% url 'landing' %}#{{ tab.content.slug }}">{{ tab.content.title }}</a>
         {% endfor %}
         {% if user.is_authenticated %}
           <a href="{% url 'user_detail' %}">Мой кабинет <i class="fas fa-sign-out-alt"></i></a>

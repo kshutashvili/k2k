@@ -53,8 +53,8 @@
                         </button>
 					</div>
 					<div class="main-content__tab">
-						<a href="{% url 'landing' %}" class="main-content__tab-link active">Оформить кредит</a>
-						<a href="{% url 'transfers' %}" class="main-content__tab-link"{% if not user.is_authenticated %} onclick="event.preventDefault(); var popup = new Popup(); popup.open($('.popup #form-login'));"{% endif %}>Переводы</a>
+						<a href="{% url 'landing' %}" class="main-content__tab-link"{% if not user.is_authenticated %} onclick="event.preventDefault(); var popup = new Popup(); popup.open($('.popup #form-login'));"{% endif %}>Переводы</a>
+                        <a href="{% url 'loan' %}" class="main-content__tab-link active">Оформить кредит</a>
 					</div>
 				</main>
 				<!--img height must be less than 280px-->

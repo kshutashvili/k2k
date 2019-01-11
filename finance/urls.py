@@ -4,7 +4,7 @@ from finance.views import TransferView, TransferViewPage
 
 
 urlpatterns = [
-    url(r'^transfers/$', TransferView.as_view(), name='transfers'),
+    url(r'^$', TransferView.as_view(), name='landing'),
     url(
         r'^transfers-page/$',
         TransferViewPage.as_view(),

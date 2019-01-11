@@ -9,9 +9,7 @@ from info.models import (
 from users.views import VerifiedPhoneRequiredMixin
 
 
-class TransferView(LoginRequiredMixin,
-                   VerifiedPhoneRequiredMixin,
-                   TemplateView):
+class TransferView(TemplateView):
 
     template_name = 'finance/transfers.html'
 
@@ -45,9 +43,7 @@ class TransferView(LoginRequiredMixin,
         return context
 
 
-class TransferViewPage(LoginRequiredMixin,
-                       VerifiedPhoneRequiredMixin,
-                       TemplateView):
+class TransferViewPage(TemplateView):
 
     template_name = 'finance/transfer_page.html'
 

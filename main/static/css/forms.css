@@ -1,0 +1,35 @@
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.text-center {
+    text-align: center;
+}
+.title {
+    display: block;
+    margin-top: 2%;
+}
+.title h1 {
+    font-size: 18px;
+}
+.main__description {
+    height: 77px;
+    background-color: #cae701;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: lowercase;
+    line-height: 77px;
+    color: #010101 !important;
+}
+#p2p-form {
+    margin: 0;
+    /* padding: 0; */
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}

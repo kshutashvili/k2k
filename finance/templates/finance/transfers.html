@@ -2,44 +2,44 @@
 {% load static %}
 
 {% block meta_title %}
-    {% for b in main_block|slice:':1' %}
-        {{ b.title }}
-    {% endfor %}
+	{% for b in main_block|slice:':1' %}
+		{{ b.title }}
+	{% endfor %}
 {% endblock %}
 
 {% block menu_header %}
   <main class="header__main">
-            <div class="container">
-                <a href="{% url 'landing' %}" class="b-logo">
-                    <img src="{% static 'img/logo.png' %}" alt="logo">
-                </a>
+			<div class="container">
+				<a href="{% url 'landing' %}" class="b-logo">
+					<img src="{% static 'img/logo.png' %}" alt="logo">
+				</a>
 
-                <button class="mobile-menu">
-                    <div class="mobile-menu__sandwich">
-                        <span class="mobile-menu__topper"></span>
-                        <span class="mobile-menu__middle"></span>
-                        <span class="mobile-menu__footer"></span>
-                    </div>
-                    <span class="mobile-menu__text">Меню</span>
-                </button>
+				<button class="mobile-menu">
+					<div class="mobile-menu__sandwich">
+						<span class="mobile-menu__topper"></span>
+						<span class="mobile-menu__middle"></span>
+						<span class="mobile-menu__footer"></span>
+					</div>
+					<span class="mobile-menu__text">Меню</span>
+				</button>
 
-                <nav class="header__main-nav">
-                {% for tab in tabs %}
-                    <a href="{% url 'transfers' %}#{{ tab.content.slug }}">{{ tab.content.title }}</a>
-                {% endfor %}
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'user_detail' %}">Мой кабинет <i class="fas fa-sign-out-alt"></i></a>
-                    {% endif %}
-                </nav>
-            </div>
-        </main>
+				<nav class="header__main-nav">
+				{% for tab in tabs %}
+					<a href="{% url 'landing' %}#{{ tab.content.slug }}">{{ tab.content.title }}</a>
+				{% endfor %}
+					{% if user.is_authenticated %}
+					<a href="{% url 'user_detail' %}">Мой кабинет <i class="fas fa-sign-out-alt"></i></a>
+					{% endif %}
+				</nav>
+			</div>
+		</main>
 {% endblock %}
 
 {% block content %}
 
 	<section class="main-section">
 		<div class="container">
-        {% for b in main_block|slice:':1' %}
+		{% for b in main_block|slice:':1' %}
 			<div class="main">
 				<main class="main-content">
 					<h1 class="main-content__title">{{ b.title }}</h1>
@@ -47,17 +47,17 @@
 
 					<div class="btn-group">
 						<a href="{% url 'transfers-page' %}" class="btn btn-prime">
-                        {% if b.button1 %}{{ b.button1 }}{% else %}Перевести деньги
-                        {% endif %}
-                        </a>
+						{% if b.button1 %}{{ b.button1 }}{% else %}Перевести деньги
+						{% endif %}
+						</a>
 						<button class="btn btn-prime btnRegistration">
-                        {% if b.button2 %}{{ b.button2 }}{% else %}
-                        Регистрация{% endif %}</button>
+						{% if b.button2 %}{{ b.button2 }}{% else %}
+						Регистрация{% endif %}</button>
 					</div>
 
 					<div class="main-content__tab">
-						<a href="{% url 'landing' %}" class="main-content__tab-link">Оформить кредит</a>
-						<a href="{% url 'transfers' %}" class="main-content__tab-link active">Переводы</a>
+						<a href="{% url 'landing' %}" class="main-content__tab-link active">Переводы</a>
+						<a href="{% url 'loan' %}" class="main-content__tab-link">Оформить кредит</a>
 					</div>
 				</main>
 				<!--img height must be less than 280px-->
@@ -67,7 +67,7 @@
 					<img src="{% if b.extra_image %}{{ b.extra_image.url }}{% else %}{% static 'img/pig.png' %}{% endif %}" alt="pig" class="main__image-abs">
 				</div>
 			</div>
-            {% endfor  %}
+			{% endfor  %}
 		</div>
 	</section>
 
@@ -75,12 +75,12 @@
 		<div class="container">
 			<div class="media">
 			{% for privilege in privileges|slice:':6' %}
-                <div class="media__item">
-                    <img src="{{ privilege.icon.url }}" alt="smartphone" class="media__item-img">
-                    <p class="media__item-text">{{ privilege.content }}</p>
-                </div>
-            {% endfor %}
-            </div>
+				<div class="media__item">
+					<img src="{{ privilege.icon.url }}" alt="smartphone" class="media__item-img">
+					<p class="media__item-text">{{ privilege.content }}</p>
+				</div>
+			{% endfor %}
+			</div>
 			</div>
 		</div>
 	</section>
@@ -149,36 +149,157 @@
 			</form>
 		</div>
 	</section>
+
+	<!--<section class="section">
+		<div class="container" style="padding-left: 0px;padding-right: 0px;">
+			<div class="row">
+				<div class="title text-center">
+					<h1 class="main__description">Переказ з картки на картку</h1>
+				</div>
+			</div>
+			<form id="p2p-form" action="https://pay4.com.ua/frame?skin=k2k2&agent=k2k2&src=website" method="post" role="form" class="ng-pristine ng-valid">
+				<input type="hidden" name="_csrf" value="MWhrZlZTNGZJWSIRJhh/M0hQMRYePwI0XipeMwA5DSlIEUYKFCR3CA==">
+				<div class="row m-0">
+					<div class="col-sm-6 col-xs-12">
+						<div class="card">
+							<h2 class="card-title">відправник</h2>
+							<div class="card__row">
+								<div class="card__icon">
+									<div class="card__icon-send icon"></div>
+								</div>
+								<div class="card__description">
+									<div class="card__pan">
+										<div class="card__label">Введіть номер своєї карти</div>
+										<input type="text" id="cardFromNumber" class="form-control rfield number placeholdr" name="P2PForm[cardFromNumber]" value="" size="40" maxlength="" title="Формат: 1234-5678-9000-0001" placeholder="ХХХХ - ХХХХ - ХХХХ - ХХХХ" autocomplete="off" required="" data-plugin-inputmask="inputmask_70d76fdc">
+									</div>
+								</div>
+							</div>
+							<div class="card__row">
+								<div class="card__description">
+									<div class="row">
+										<div class="card__pan col-xs-6">
+											<div class="card__label">Термін дії</div>
+											<div class="row">
+												<div class="col-xs-6">
+													<input type="text" id="expMonth" class="form-control rfield date" name="P2PForm[expMonth]" value="" maxlength="2" autocomplete="off" placeholder="MM" required="">
+												</div>
+												<div class="col-xs-6">
+													<input type="text" id="expYear" class="form-control rfield date" name="P2PForm[expYear]" value="" maxlength="2" autocomplete="off" placeholder="YY" required="">
+												</div>
+											</div>
+										</div>
+										<div class="card__pan col-xs-6">
+											<div class="card__label">CVV <span class=" right tool-item" data="CVV2/CVC2 - тризначний код перевірки картки, розташований на зворотному боці платіжної картки, у полі для підпису">
+											Що це?</span></div>
+											<input type="text" style="display: none;">
+											<input type="password" style="display: none;">                    
+											<input type="password" id="cvv" class="form-control rfield cvv2" name="P2PForm[cvv]" value="" maxlength="3" autocomplete="off" placeholder="***" required="">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-xs-12">
+						<div class="card">
+							<h2 class="card-title">отримувач</h2>
+							<div class="card__row">
+								<div class="card__icon">
+									<div class="card__icon-send icon"></div>
+								</div>
+								<div class="card__description">
+									<div class="card__pan">
+										<div class="card__label">Введіть номер карти отримувача</div>
+										<input type="text" id="cardToNumber" class="form-control rfield number placeholdr" name="P2PForm[cardToNumber]" size="40" maxlength="" title="Формат: 1234-5678-9000-0001" placeholder="ХХХХ - ХХХХ - ХХХХ - ХХХХ" autocomplete="off" required="" data-plugin-inputmask="inputmask_70d76fdc">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 sum">
+						<div class="sumaperekazu">
+							СУМА ПЕРЕКАЗУ<br>
+							від 10 до 14999 (включаючи комісію)<br>
+							<span class="grn">
+								<input type="text" id="amount" class="form-control rfield suminput" name="P2PForm[amount]" maxlength="10" placeholder="" required="" data-plugin-inputmask="inputmask_7f20bb55">
+								грн
+							</span>
+						</div>
+						<span class="note medium">
+							Комісія буде розрахована автоматично (0.6% + 5.00 грн).
+						</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 sum">
+						<span class="cardtext2 comission">Разом, з урахуванням комісії:</span>
+						<input type="hidden" id="total" class="form-control" name="P2PForm[total]" value="0">
+						<span class="result" id="tax">0.00 грн</span>
+						<div class="card__row phone_class">
+							<div class="card__icon">
+								<div class="card__icon-phone icon"></div>
+							</div>
+							<div class="card__description">
+								<div class="card__pan">
+									<div class="card__label">Ваш телефон</div>
+									<input type="text" id="p2pform-phone" class="form-control mobile rfield" name="P2PForm[phone]" value="" autocomplete="off" placeholder="+380 (__) ___-__-__" required="" data-plugin-inputmask="inputmask_394efd8b">
+								</div>
+							</div>
+						</div>
+						<div class="tooltip-elems mobimg">
+							<p class="tool-item" data="Вкажіть номер, за яким з Вами можна зв'язатися">
+								<img src="https://pay4.com.ua/i/quest.png">
+							</p>
+						</div>
+						<div class="tooltip-block"></div>
+						<span class="agree medium">
+							<input type="checkbox" name="P2Pform[agreement]" id="agreement" required="required" checked="checked">
+							Я погоджуюсь з
+							<a href="/docs/payforce_p2p_agreement_ua.pdf" target="_blank" class="link">
+								умовами публічного договору
+							</a>
+						</span>
+						<span class="button">
+							<input type="submit" id="check-send-p2p" class="btn_submit" name="p2p-send-button" value="ЗДІЙСНИТИ ПЕРЕКАЗ" onclick="ga('send','pageview',location.pathname + '/btn_continue');">
+						</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>-->
+
 	{% include "main/online_decision.html" %}
 	{% if questions|length > 0 %}
    <section class="question-section">
-        <div class="container">
-            <h2 class="section-title">Вопрос – ответ</h2>
-            {% for q in questions %}
-            <div class="question spoiler">
-                <h3 class="question__title">{{ q.question }}<i class="fas fa-angle-down"></i></h3>
-                <p class="question__answer">{{ q.answer }}</p>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-    {% include "info/question_form.html" %}
+		<div class="container">
+			<h2 class="section-title">Вопрос – ответ</h2>
+			{% for q in questions %}
+			<div class="question spoiler">
+				<h3 class="question__title">{{ q.question }}<i class="fas fa-angle-down"></i></h3>
+				<p class="question__answer">{{ q.answer }}</p>
+			</div>
+			{% endfor %}
+		</div>
+	</section>
+	{% endif %}
+	{% include "info/question_form.html" %}
 {% endblock %}
 {% block footer_menu %}
  <ul class="footer__nav">
-    {% for links in footer_menu1|slice:":5" %}
-    <li><a href="{% url 'transfers' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
-    {% endfor %}
+	{% for links in footer_menu1|slice:":5" %}
+	<li><a href="{% url 'landing' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+	{% endfor %}
 </ul>
  <ul class="footer__nav">
-    {% for links in footer_menu2|slice:":5" %}
-    <li><a href="{% url 'transfers' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
-     {% endfor %}
+	{% for links in footer_menu2|slice:":5" %}
+	<li><a href="{% url 'landing' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+	 {% endfor %}
 </ul>
 <ul class="footer__nav">
-    {% for links in footer_menu3|slice:":5" %}
-    <li><a href="{% url 'transfers' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
-    {% endfor %}
+	{% for links in footer_menu3|slice:":5" %}
+	<li><a href="{% url 'landing' %}#{{ tab.content.slug }}" class="footer__nav-link">{{ links.content.title}}</a></li>
+	{% endfor %}
 </ul>
 {% endblock %}
