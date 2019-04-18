@@ -7,6 +7,23 @@
 	{% endfor %}
 {% endblock %}
 
+{% block extra_head %}
+<script type="text/javascript" src="https://www.portmone.com.ua/r3/js/iframe/portmone.min.js"></script>
+<script type="text/javascript">//<!--
+
+    var portmone = new Portmone({
+        lang: 'ru',
+        prefix: 'K2K',
+        service: 'p2p',
+        container: 'iframe-container',
+        initialFrameHeight: '700'
+   });
+
+//-->
+
+</script>
+{% endblock extra_head %}
+
 {% block menu_header %}
   <main class="header__main">
 			<div class="container">
@@ -88,187 +105,9 @@
 	<section class="section">
 		<div class="container">
 			<h2 class="section-title">Переводы</h2>
-			<form action="#" class="form-delivery">
-				<fieldset class="form-delivery__person">
-					<h4 class="form-delivery__caption">Відправник</h4>
-					<div class="form-delivery__card">
-						<label for="card-1" class="form-delivery__label">Введіть номер своєї карти</label>
-						<input id="card-1" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
-						<span class="form-delivery__icon">
-							<i class="far fa-envelope"></i>
-						</span>
-					</div>
-					<div class="form-delivery__multiple">
-						<div class="form-delivery__multiple-item">
-							<label for="date-1" class="form-delivery__label form-delivery__label--expanded">Термін дії</label>
-
-							<input id="date-1" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="MM" maxlength="2">
-							<input id="date-2" type="tel" class="form-delivery__input form-delivery__input--date" placeholder="YY" maxlength="2">
-						</div>
-						<div class="form-delivery__multiple-item">
-							<label for="cvv-1" class="form-delivery__label">CVV</label>
-							<a href="#" class="form-delivery__link-top">Що це?</a>
-							<input id="cvv-1" type="password" class="form-delivery__input form-delivery__input--cvv" placeholder="***" maxlength="3">
-						</div>
-					</div>
-				</fieldset>
-				<fieldset class="form-delivery__person">
-					<h4 class="form-delivery__caption">Отримувач</h4>
-					<div class="form-delivery__card">
-						<label for="card-2" class="form-delivery__label">Введіть номер карти отримувача</label>
-						<input id="card-2" type="tel" class="form-delivery__input form-delivery__input--card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
-						<span class="form-delivery__icon">
-							<i class="far fa-envelope"></i>
-						</span>
-					</div>
-				</fieldset>
-				<fieldset class="form-delivery__main">
-					<h4 class="form-delivery__main-title">
-						<span>Сума переказу</span>
-						від 10 до 14999 (включаючи комісію)
-					</h4>
-					<input type="tel" placeholder="0.00" class="form-delivery__input form-delivery__input--labeled">
-					<span for="#" class="form-delivery__input-caption">грн</span>
-					<p class="form-delivery__main-prompt">Комісія буде зарахована автоматично (0.6% + 3.06 грн).</p>
-					<p class="form-delivery__main-info">Разом з урахуванням комісії: </p>
-					<div class="form-delivery__main-total">0.00 грн</div>
-					<div class="form-delivery__phone">
-						<label for="delivery-phone" class="form-delivery__label">Ваш телефон</label>
-						<input class="form-delivery__input form-delivery__input--phone" id="delivery-phone" type="tel" placeholder="+38 (_ _ _) _ _ _  _ _ _ _">
-						<span class="form-delivery__icon form-delivery__icon--inside">
-							<i class="fas fa-phone"></i>
-						</span>
-						<a href="#" class="form-delivery__icon-link" title="Подсказка"><i class="far fa-question-circle"></i></a>
-					</div>
-					<div class="b-checkbox">
-						<input id="delivery-check" type="checkbox">
-						<label for="delivery-check">Я погоджуюсь з <a href="#" class="b-checkbox__link">умовами публічного договору</a></label>
-						<button class="form__btn-apply">Здійснити переказ</button>	
-					</div>
-				</fieldset>
-			</form>
+			<p id="iframe-container" style="max-width: 800px;margin: 0 auto;"></p>
 		</div>
 	</section>
-
-	<!--<section class="section">
-		<div class="container" style="padding-left: 0px;padding-right: 0px;">
-			<div class="row">
-				<div class="title text-center">
-					<h1 class="main__description">Переказ з картки на картку</h1>
-				</div>
-			</div>
-			<form id="p2p-form" action="https://pay4.com.ua/frame?skin=k2k2&agent=k2k2&src=website" method="post" role="form" class="ng-pristine ng-valid">
-				<input type="hidden" name="_csrf" value="MWhrZlZTNGZJWSIRJhh/M0hQMRYePwI0XipeMwA5DSlIEUYKFCR3CA==">
-				<div class="row m-0">
-					<div class="col-sm-6 col-xs-12">
-						<div class="card">
-							<h2 class="card-title">відправник</h2>
-							<div class="card__row">
-								<div class="card__icon">
-									<div class="card__icon-send icon"></div>
-								</div>
-								<div class="card__description">
-									<div class="card__pan">
-										<div class="card__label">Введіть номер своєї карти</div>
-										<input type="text" id="cardFromNumber" class="form-control rfield number placeholdr" name="P2PForm[cardFromNumber]" value="" size="40" maxlength="" title="Формат: 1234-5678-9000-0001" placeholder="ХХХХ - ХХХХ - ХХХХ - ХХХХ" autocomplete="off" required="" data-plugin-inputmask="inputmask_70d76fdc">
-									</div>
-								</div>
-							</div>
-							<div class="card__row">
-								<div class="card__description">
-									<div class="row">
-										<div class="card__pan col-xs-6">
-											<div class="card__label">Термін дії</div>
-											<div class="row">
-												<div class="col-xs-6">
-													<input type="text" id="expMonth" class="form-control rfield date" name="P2PForm[expMonth]" value="" maxlength="2" autocomplete="off" placeholder="MM" required="">
-												</div>
-												<div class="col-xs-6">
-													<input type="text" id="expYear" class="form-control rfield date" name="P2PForm[expYear]" value="" maxlength="2" autocomplete="off" placeholder="YY" required="">
-												</div>
-											</div>
-										</div>
-										<div class="card__pan col-xs-6">
-											<div class="card__label">CVV <span class=" right tool-item" data="CVV2/CVC2 - тризначний код перевірки картки, розташований на зворотному боці платіжної картки, у полі для підпису">
-											Що це?</span></div>
-											<input type="text" style="display: none;">
-											<input type="password" style="display: none;">                    
-											<input type="password" id="cvv" class="form-control rfield cvv2" name="P2PForm[cvv]" value="" maxlength="3" autocomplete="off" placeholder="***" required="">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6 col-xs-12">
-						<div class="card">
-							<h2 class="card-title">отримувач</h2>
-							<div class="card__row">
-								<div class="card__icon">
-									<div class="card__icon-send icon"></div>
-								</div>
-								<div class="card__description">
-									<div class="card__pan">
-										<div class="card__label">Введіть номер карти отримувача</div>
-										<input type="text" id="cardToNumber" class="form-control rfield number placeholdr" name="P2PForm[cardToNumber]" size="40" maxlength="" title="Формат: 1234-5678-9000-0001" placeholder="ХХХХ - ХХХХ - ХХХХ - ХХХХ" autocomplete="off" required="" data-plugin-inputmask="inputmask_70d76fdc">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 sum">
-						<div class="sumaperekazu">
-							СУМА ПЕРЕКАЗУ<br>
-							від 10 до 14999 (включаючи комісію)<br>
-							<span class="grn">
-								<input type="text" id="amount" class="form-control rfield suminput" name="P2PForm[amount]" maxlength="10" placeholder="" required="" data-plugin-inputmask="inputmask_7f20bb55">
-								грн
-							</span>
-						</div>
-						<span class="note medium">
-							Комісія буде розрахована автоматично (0.6% + 5.00 грн).
-						</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 sum">
-						<span class="cardtext2 comission">Разом, з урахуванням комісії:</span>
-						<input type="hidden" id="total" class="form-control" name="P2PForm[total]" value="0">
-						<span class="result" id="tax">0.00 грн</span>
-						<div class="card__row phone_class">
-							<div class="card__icon">
-								<div class="card__icon-phone icon"></div>
-							</div>
-							<div class="card__description">
-								<div class="card__pan">
-									<div class="card__label">Ваш телефон</div>
-									<input type="text" id="p2pform-phone" class="form-control mobile rfield" name="P2PForm[phone]" value="" autocomplete="off" placeholder="+380 (__) ___-__-__" required="" data-plugin-inputmask="inputmask_394efd8b">
-								</div>
-							</div>
-						</div>
-						<div class="tooltip-elems mobimg">
-							<p class="tool-item" data="Вкажіть номер, за яким з Вами можна зв'язатися">
-								<img src="https://pay4.com.ua/i/quest.png">
-							</p>
-						</div>
-						<div class="tooltip-block"></div>
-						<span class="agree medium">
-							<input type="checkbox" name="P2Pform[agreement]" id="agreement" required="required" checked="checked">
-							Я погоджуюсь з
-							<a href="/docs/payforce_p2p_agreement_ua.pdf" target="_blank" class="link">
-								умовами публічного договору
-							</a>
-						</span>
-						<span class="button">
-							<input type="submit" id="check-send-p2p" class="btn_submit" name="p2p-send-button" value="ЗДІЙСНИТИ ПЕРЕКАЗ" onclick="ga('send','pageview',location.pathname + '/btn_continue');">
-						</span>
-					</div>
-				</div>
-			</form>
-		</div>
-	</section>-->
 
 	{% include "main/online_decision.html" %}
 	{% if questions|length > 0 %}
